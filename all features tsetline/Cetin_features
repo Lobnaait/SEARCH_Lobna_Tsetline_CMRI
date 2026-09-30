@@ -1,0 +1,86 @@
+"""Cetin et al. 2017 radiomics features: height, weight, ED-ES duration + PyRadiomics shape,
+first-order, GLCM, GLRLM and GLSZM features of LV, RV and MYO at ED and ES, extracted from the
+original cine frames (no filtering, PyRadiomics default bin width 25).
+
+PyRadiomics 3.0.1 exposes 96 features for these classes when the deprecated ones (e.g.
+Compactness2, selected by Cetin et al.) are enabled -> 3 + 6 x 96 = 579 features
+(the paper, using the 2017 PyRadiomics, reports 567).
+
+python radiomics_features.py --seg gt            # reference masks (train + test)
+python radiomics_features.py --seg isensee       # automatic masks from our Isensee ensemble (test)
+"""
+import argparse
+import logging
+import os
+import sys
+from multiprocessing import Pool
+
+import nibabel as nib
+import numpy as np
+import pandas as pd
+import radiomics
+import SimpleITK as sitk
+from radiomics import featureextractor, getFeatureClasses
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(HERE, '..', '..'))
+from common.data import load_patient, TRAIN_IDS, TEST_IDS, PROJECT_ROOT  # noqa: E402
+
+radiomics.setVerbosity(logging.ERROR)
+STRUCTS = {'RV': 1, 'MYO': 2, 'LV': 3}
+CLASSES = ['shape', 'firstorder', 'glcm', 'glrlm', 'glszm']
+
+
+def make_extractor():
+    ext = featureextractor.RadiomicsFeatureExtractor()
+    ext.disableAllFeatures()
+    fc = getFeatureClasses()
+    ext.enableFeaturesByName(**{c: list(fc[c].getFeatureNames().keys()) for c in CLASSES})
+    return ext
+
+
+def to_sitk(arr_zxy, spacing):
+    im = sitk.GetImageFromArray(np.ascontiguousarray(arr_zxy.transpose(0, 2, 1)))  # sitk array order z,y,x
+    im.SetSpacing((float(spacing[1]), float(spacing[2]), float(spacing[0])))
+    return im
+
+
+def patient_row(args):
+    pid, seg_src = args
+    p = load_patient(pid)
+    ext = make_extractor()
+    row = {'pid': pid, 'group': p['group'], 'height': p['height'], 'weight': p['weight'],
+           'ED_ES_duration': abs(p['ES'] - p['ED'])}
+    for ph in ['ED', 'ES']:
+        if seg_src == 'gt':
+            seg = p['gt_' + ph]
+        else:
+            f = os.path.join(PROJECT_ROOT, 'methods', 'isensee2017', 'predictions', 'test', 'patient%03d_%s.nii.gz' % (pid, ph))
+            seg = np.asarray(nib.load(f).dataobj).transpose(2, 0, 1)
+        img = to_sitk(p['img_' + ph].astype(np.float32), p['spacing'])
+        for name, lab in STRUCTS.items():
+            m = (seg == lab).astype(np.uint8)
+            if m.sum() < 5:
+                continue
+            out = ext.execute(img, to_sitk(m, p['spacing']), label=1)
+            for k, v in out.items():
+                if k.startswith('original_'):
+                    row['%s_%s_%s' % (name, ph, k[len('original_'):])] = float(v)
+    return row
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--seg', default='gt', choices=['gt', 'isensee'])
+    a = ap.parse_args()
+    ids = TRAIN_IDS + TEST_IDS if a.seg == 'gt' else TEST_IDS
+    with Pool(24) as pool:
+        rows = pool.map(patient_row, [(pid, a.seg) for pid in ids])
+    df = pd.DataFrame(rows).fillna(0)
+    os.makedirs(os.path.join(HERE, 'results'), exist_ok=True)
+    df.to_csv(os.path.join(HERE, 'results', 'radiomics_%s.csv' % a.seg), index=False)
+    print(df.shape, 'features:', df.shape[1] - 2)
+
+
+if __name__ == '__main__':
+    main()
