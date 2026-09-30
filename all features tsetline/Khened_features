@@ -1,0 +1,66 @@
+"""Khened et al. cardiac features.
+
+- `medIA_features`: the 20 features of the extended paper / public code (volumes, EFs, ratios and
+  myocardial wall thickness (MWT) statistics at ED and ES), same order as the code.
+- `stacom_features`: the 11-feature challenge version described in Bernard et al. 2018
+  ("9 derived from their segmentation map in addition to the patient weight and height").
+  The STACOM paper is not openly available; our choice of the 9 segmentation features is the
+  volumetric subset of the 20 features (documented in README.md).
+Volumes in ml (the code uses mm^3; a constant scale does not affect the classifiers).
+"""
+import numpy as np
+from scipy import ndimage
+from scipy.spatial.distance import cdist
+from skimage import feature
+
+RV, MYO, LV = 1, 2, 3
+
+
+def vol(seg, lab, spacing):
+    return (seg == lab).sum() * np.prod(spacing) / 1000.0
+
+
+def myocardial_thickness(seg, spacing):
+    """Per-slice mean/std of the distance from each inner-contour pixel to the nearest outer-contour pixel."""
+    means, stds = [], []
+    for sl in seg:
+        myo = sl == MYO
+        filled = ndimage.binary_fill_holes(myo)
+        cavity = filled & ~myo
+        cin, cex = feature.canny(cavity.astype(float)), feature.canny(filled.astype(float))
+        pin, pex = np.argwhere(cin), np.argwhere(cex)
+        if len(pin) == 0 or len(pex) == 0:
+            continue
+        d = cdist(pin, pex).min(1) * spacing[1]
+        means.append(d.mean())
+        stds.append(d.std())
+    means, stds = np.array(means), np.array(stds)
+    if len(means) == 0:
+        return [0.0] * 4
+    return [means.max(), means.std(), stds.mean(), stds.std()]
+
+
+def medIA_features(seg_ed, seg_es, spacing):
+    ed_lv, es_lv = vol(seg_ed, LV, spacing), vol(seg_es, LV, spacing)
+    ed_rv, es_rv = vol(seg_ed, RV, spacing), vol(seg_es, RV, spacing)
+    ed_myo, es_myo = vol(seg_ed, MYO, spacing), vol(seg_es, MYO, spacing)
+    eps = 1e-3
+    f = {
+        'ED_LV': ed_lv, 'ES_LV': es_lv, 'ED_RV': ed_rv, 'ES_RV': es_rv, 'ED_MYO': ed_myo, 'ES_MYO': es_myo,
+        'EF_LV': (ed_lv - es_lv) / max(ed_lv, eps), 'EF_RV': (ed_rv - es_rv) / max(ed_rv, eps),
+        'ED_LV_RV': ed_lv / max(ed_rv, eps), 'ES_LV_RV': es_lv / max(es_rv, eps),
+        'ED_MYO_LV': ed_myo / max(ed_lv, eps), 'ES_MYO_LV': es_myo / max(es_lv, eps),
+    }
+    for ph, s in [('ES', seg_es), ('ED', seg_ed)]:
+        mx, sd_mean, mean_sd, sd_sd = myocardial_thickness(s, spacing)
+        f.update({ph + '_MWT_max_mean': mx, ph + '_MWT_std_mean': sd_mean,
+                  ph + '_MWT_mean_std': mean_sd, ph + '_MWT_std_std': sd_sd})
+    return f
+
+
+STACOM_SEG_FEATURES = ['ED_LV', 'ES_LV', 'ED_RV', 'ES_RV', 'ED_MYO', 'EF_LV', 'EF_RV', 'ED_LV_RV', 'ED_MYO_LV']
+STACOM_FEATURES = STACOM_SEG_FEATURES + ['height', 'weight']
+MEDIA_FEATURES = ['ED_LV', 'ES_LV', 'ED_RV', 'ES_RV', 'ED_MYO', 'ES_MYO', 'EF_LV', 'EF_RV', 'ED_LV_RV', 'ES_LV_RV',
+                  'ED_MYO_LV', 'ES_MYO_LV', 'ES_MWT_max_mean', 'ES_MWT_std_mean', 'ES_MWT_mean_std',
+                  'ES_MWT_std_std', 'ED_MWT_max_mean', 'ED_MWT_std_mean', 'ED_MWT_mean_std', 'ED_MWT_std_std']
+STAGE2_FEATURES = ['ES_MWT_max_mean', 'ES_MWT_std_mean', 'ES_MWT_mean_std', 'ES_MWT_std_std']
