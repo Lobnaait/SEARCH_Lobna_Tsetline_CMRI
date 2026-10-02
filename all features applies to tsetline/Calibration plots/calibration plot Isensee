@@ -1,0 +1,104 @@
+"""Calibration (reliability) plots for the Isensee et al. 2017 diagnosis ensemble (MLPs + RF).
+
+Place next to classify.py and run:  python calibration_isensee.py --source pred   (or gt)
+
+Unlike the SVM pipeline, this model already outputs probabilities, so nothing needs to change in
+classify.py: we reuse its fit_predict() and keep the full probability matrices instead of argmax.
+Curves: MLP ensemble, random forest, and the final 0.5/0.5 ensemble, for
+  (a) 5-fold CV on the 100 training cases (out-of-fold probabilities; same folds/seeds as classify.py)
+  (b) the 50 test cases (model trained on all 100 cases, seed 123 as in classify.py)
+The probabilities are cached in results/probs_<source>.npz (use --recompute to redo; slow: 50 MLPs x 6 fits).
+"""
+import argparse
+import os
+import sys
+
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn.model_selection import StratifiedKFold
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+from classify import build_table, fit_predict, CLASSES  # noqa: E402
+
+N_BINS = 5
+MODELS = ['mlp', 'rf', 'ensemble']
+LABELS = {'mlp': 'MLP ensemble', 'rf': 'Random forest', 'ensemble': 'Final (MLP+RF)'}
+
+
+def reliability(probs, y, n_bins=N_BINS):
+    """Top-label reliability. y = integer class ids. Returns mean conf, acc, counts, ECE, Brier."""
+    K = probs.shape[1]
+    conf, pred = probs.max(1), probs.argmax(1)
+    correct = (pred == y).astype(float)
+    edges = np.linspace(1 / K, 1.0, n_bins + 1)
+    idx = np.clip(np.digitize(conf, edges) - 1, 0, n_bins - 1)
+    mc, acc, cnt = np.full(n_bins, np.nan), np.full(n_bins, np.nan), np.zeros(n_bins, int)
+    for b in range(n_bins):
+        m = idx == b
+        cnt[b] = m.sum()
+        if m.any():
+            mc[b], acc[b] = conf[m].mean(), correct[m].mean()
+    ece = np.nansum(cnt / cnt.sum() * np.abs(acc - mc))
+    brier = float(((probs - np.eye(K)[y]) ** 2).sum(1).mean())
+    return mc, acc, cnt, float(ece), brier
+
+
+def get_probs(source, recompute):
+    cache = os.path.join(HERE, 'results', 'probs_%s.npz' % source)
+    df = build_table(source)
+    feat_cols = [c for c in df.columns if c not in ('pid', 'group')]
+    tr, te = df[df.pid <= 100], df[df.pid > 100]
+    Xtr, ytr = tr[feat_cols].values, np.array([CLASSES.index(g) for g in tr.group])
+    Xte, yte = te[feat_cols].values, np.array([CLASSES.index(g) for g in te.group])
+    if os.path.exists(cache) and not recompute:
+        z = np.load(cache)
+        return {k: z[k] for k in z.files}, ytr, yte
+    out = {}
+    cv = {m: np.zeros((len(tr), 5)) for m in MODELS}
+    for k, (i_tr, i_va) in enumerate(StratifiedKFold(5, shuffle=True, random_state=0).split(Xtr, ytr)):
+        pr = fit_predict(Xtr[i_tr], ytr[i_tr], Xtr[i_va], seed=k)
+        for m in MODELS:
+            cv[m][i_va] = pr[m]
+        print('CV fold', k, 'done', flush=True)
+    pr = fit_predict(Xtr, ytr, Xte, seed=123)
+    for m in MODELS:
+        out['cv_' + m] = cv[m]
+        out['test_' + m] = pr[m]
+    np.savez(cache, **out)
+    return out, ytr, yte
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--source', default='pred', choices=['pred', 'gt'])
+    ap.add_argument('--recompute', action='store_true')
+    a = ap.parse_args()
+    probs, ytr, yte = get_probs(a.source, a.recompute)
+
+    fig, axes = plt.subplots(2, 2, figsize=(10, 7.5), gridspec_kw={'height_ratios': [3, 1]})
+    for j, (split, y, title) in enumerate([('cv', ytr, '5-fold CV (train, out-of-fold)'),
+                                           ('test', yte, 'Test set')]):
+        ax = axes[0, j]
+        ax.plot([0, 1], [0, 1], 'k--', label='Perfect calibration')
+        for m, mk in zip(MODELS, ['s-', '^-', 'o-']):
+            mc, acc, cnt, ece, brier = reliability(probs['%s_%s' % (split, m)], y)
+            ax.plot(mc, acc, mk, label='%s (ECE=%.3f, Brier=%.3f)' % (LABELS[m], ece, brier))
+        ax.set(xlim=(0, 1), ylim=(0, 1), xlabel='Mean predicted confidence', ylabel='Accuracy',
+               title='%s, n=%d  [source=%s]' % (title, len(y), a.source))
+        ax.legend(loc='upper left', fontsize=8)
+        axes[1, j].hist([probs['%s_%s' % (split, m)].max(1) for m in MODELS],
+                        bins=np.linspace(0.2, 1, N_BINS + 1), label=[LABELS[m] for m in MODELS])
+        axes[1, j].set(xlabel='Confidence', ylabel='Count')
+        axes[1, j].legend(fontsize=7)
+    fig.suptitle('Isensee et al. 2017 (MLP + RF ensemble) - calibration', y=1.0)
+    fig.tight_layout()
+    out = os.path.join(HERE, 'results', 'calibration_plot_%s.png' % a.source)
+    fig.savefig(out, dpi=200, bbox_inches='tight')
+    print('saved', out)
+
+
+if __name__ == '__main__':
+    main()
