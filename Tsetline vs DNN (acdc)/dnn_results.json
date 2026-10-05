@@ -1,0 +1,155 @@
+{
+  "features": [
+    "LV_EDV",
+    "LV_ESV",
+    "LV_EF",
+    "RV_EDV",
+    "RV_ESV",
+    "RV_EF",
+    "MYO_mass_ED",
+    "MYO_vol_ES",
+    "LV_EDV_idx",
+    "LV_ESV_idx",
+    "RV_EDV_idx",
+    "RV_ESV_idx",
+    "MYO_mass_idx",
+    "RV_LV_EDV_ratio",
+    "RV_LV_ESV_ratio",
+    "MYO_LV_ED_ratio",
+    "MYO_LV_ES_ratio",
+    "Thick_max_ED",
+    "Thick_mean_ED",
+    "Thick_std_ED",
+    "Thick_max_ES",
+    "Thick_mean_ES",
+    "Thick_std_ES",
+    "Height",
+    "Weight",
+    "BSA"
+  ],
+  "best_hidden_dim": 32,
+  "best_epoch": 373,
+  "cv": {
+    "8": {
+      "best_epoch": 586,
+      "val_loss": 0.4514853239059448,
+      "val_acc": 0.9100000023841858,
+      "train_loss": 0.329598993062973,
+      "train_acc": 0.9900000095367432
+    },
+    "16": {
+      "best_epoch": 430,
+      "val_loss": 0.17483680695295334,
+      "val_acc": 0.9599999904632568,
+      "train_loss": 0.07614769116044044,
+      "train_acc": 1.0
+    },
+    "32": {
+      "best_epoch": 373,
+      "val_loss": 0.14446391351521015,
+      "val_acc": 0.9699999928474426,
+      "train_loss": 0.015636589378118515,
+      "train_acc": 1.0
+    },
+    "64": {
+      "best_epoch": 239,
+      "val_loss": 0.20470847077667714,
+      "val_acc": 0.9199999928474426,
+      "train_loss": 0.0090594831854105,
+      "train_acc": 1.0
+    },
+    "128": {
+      "best_epoch": 165,
+      "val_loss": 0.19094448015093804,
+      "val_acc": 0.9399999856948853,
+      "train_loss": 0.004923539655283094,
+      "train_acc": 1.0
+    },
+    "256": {
+      "best_epoch": 44,
+      "val_loss": 0.1812319576740265,
+      "val_acc": 0.9399999856948853,
+      "train_loss": 0.0261460579931736,
+      "train_acc": 1.0
+    }
+  },
+  "test_accuracy": 0.9,
+  "confusion_matrix": [
+    [
+      9,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      9,
+      0,
+      1,
+      0
+    ],
+    [
+      3,
+      0,
+      7,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      10,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      10
+    ]
+  ],
+  "misclassified": [
+    [
+      "patient134",
+      "HCM",
+      "NOR"
+    ],
+    [
+      "patient135",
+      "MINF",
+      "DCM"
+    ],
+    [
+      "patient143",
+      "MINF",
+      "DCM"
+    ],
+    [
+      "patient145",
+      "MINF",
+      "DCM"
+    ],
+    [
+      "patient149",
+      "DCM",
+      "MINF"
+    ]
+  ],
+  "hyperparams": {
+    "dropout": 0.3,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 16,
+    "seed": 42
+  },
+  "calibration": {
+    "temperature": 0.8580800118153064,
+    "ece_raw": 0.05669589519500733,
+    "brier_raw": 0.18408390901627153,
+    "ece_scaled": 0.04946287393569947,
+    "brier_scaled": 0.18470703423141835
+  }
+}
