@@ -1,0 +1,71 @@
+
+=== reduced: 313 features, train 100, test 50 ===
+CV done in 183s. Best: bins=5 clauses=200 T=50 s=3.0 epochs=17  CV acc=0.920±0.081
+Test acc over 10 runs: 0.844 ± 0.029 (min 0.78, max 0.90)
+              precision    recall  f1-score   support
+
+         NOR      0.875     0.700     0.778        10
+        MINF      0.750     0.900     0.818        10
+         DCM      0.875     0.700     0.778        10
+         HCM      1.000     1.000     1.000        10
+          RV      0.750     0.900     0.818        10
+
+    accuracy                          0.840        50
+   macro avg      0.850     0.840     0.838        50
+weighted avg      0.850     0.840     0.838        50
+
+           NOR  MINF  DCM  HCM  RV
+true NOR     7     0    0    0   3
+true MINF    0     9    1    0   0
+true DCM     0     3    7    0   0
+true HCM     0     0    0   10   0
+true RV      1     0    0    0   9
+
+=== clinical: 57 features, train 100, test 50 ===
+CV done in 29s. Best: bins=10 clauses=500 T=125 s=3.0 epochs=16  CV acc=0.960±0.020
+Test acc over 10 runs: 0.908 ± 0.027 (min 0.86, max 0.94)
+              precision    recall  f1-score   support
+
+         NOR      1.000     1.000     1.000        10
+        MINF      0.800     0.800     0.800        10
+         DCM      0.800     0.800     0.800        10
+         HCM      1.000     1.000     1.000        10
+          RV      1.000     1.000     1.000        10
+
+    accuracy                          0.920        50
+   macro avg      0.920     0.920     0.920        50
+weighted avg      0.920     0.920     0.920        50
+
+           NOR  MINF  DCM  HCM  RV
+true NOR    10     0    0    0   0
+true MINF    0     8    2    0   0
+true DCM     0     2    8    0   0
+true HCM     0     0    0   10   0
+true RV      0     0    0    0  10
+
+=== all: 656 features, train 100, test 50 ===
+CV done in 406s. Best: bins=10 clauses=200 T=50 s=3.0 epochs=32  CV acc=0.920±0.068
+Test acc over 10 runs: 0.836 ± 0.028 (min 0.78, max 0.88)
+              precision    recall  f1-score   support
+
+         NOR      0.857     0.600     0.706        10
+        MINF      0.889     0.800     0.842        10
+         DCM      0.818     0.900     0.857        10
+         HCM      1.000     1.000     1.000        10
+          RV      0.692     0.900     0.783        10
+
+    accuracy                          0.840        50
+   macro avg      0.851     0.840     0.838        50
+weighted avg      0.851     0.840     0.838        50
+
+           NOR  MINF  DCM  HCM  RV
+true NOR     6     0    0    0   4
+true MINF    0     8    2    0   0
+true DCM     0     1    9    0   0
+true HCM     0     0    0   10   0
+true RV      1     0    0    0   9
+
+Summary
+  reduced    313 feats | CV 0.920 | test 0.844 ± 0.029
+  clinical    57 feats | CV 0.960 | test 0.908 ± 0.027
+  all        656 feats | CV 0.920 | test 0.836 ± 0.028

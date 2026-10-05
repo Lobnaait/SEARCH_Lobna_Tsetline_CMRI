@@ -1,0 +1,657 @@
+feature,source,kept,stage,reason,kept_instead
+W__RV_ED,Wolterink,False,1-physiology,RV ED volume (same quantity as BSA-indexed volume),I__ED_RVC_volume_per_bsa
+W__MYO_ED,Wolterink,False,1-physiology,MYO ED volume (same quantity as BSA-indexed volume),I__ED_LVM_volume_per_bsa
+W__LV_ED,Wolterink,False,1-physiology,LV ED volume (same quantity as BSA-indexed volume),I__ED_LVC_volume_per_bsa
+W__RV_LV_ED,Wolterink,True,,kept,
+W__MYO_LV_ED,Wolterink,True,,kept,
+W__RV_ES,Wolterink,False,1-physiology,RV ES volume (same quantity as BSA-indexed volume),I__ES_RVC_volume_per_bsa
+W__MYO_ES,Wolterink,False,1-physiology,MYO ES volume (same quantity as BSA-indexed volume),I__ES_LVM_volume_per_bsa
+W__LV_ES,Wolterink,False,1-physiology,LV ES volume (same quantity as BSA-indexed volume),I__ES_LVC_volume_per_bsa
+W__RV_LV_ES,Wolterink,True,,kept,
+W__MYO_LV_ES,Wolterink,True,,kept,
+W__EF_LV,Wolterink,True,,kept,
+W__EF_RV,Wolterink,True,,kept,
+W__weight,Wolterink,True,,kept,
+W__height,Wolterink,True,,kept,
+K__ED_LV,Khened,False,1-physiology,LV ED volume (same quantity as BSA-indexed volume),I__ED_LVC_volume_per_bsa
+K__ES_LV,Khened,False,1-physiology,LV ES volume (same quantity as BSA-indexed volume),I__ES_LVC_volume_per_bsa
+K__ED_RV,Khened,False,1-physiology,RV ED volume (same quantity as BSA-indexed volume),I__ED_RVC_volume_per_bsa
+K__ES_RV,Khened,False,1-physiology,RV ES volume (same quantity as BSA-indexed volume),I__ES_RVC_volume_per_bsa
+K__ED_MYO,Khened,False,1-physiology,MYO ED volume (same quantity as BSA-indexed volume),I__ED_LVM_volume_per_bsa
+K__ES_MYO,Khened,False,1-physiology,MYO ES volume (same quantity as BSA-indexed volume),I__ES_LVM_volume_per_bsa
+K__EF_LV,Khened,False,1-physiology,LV ejection fraction (duplicate),W__EF_LV
+K__EF_RV,Khened,False,1-physiology,RV ejection fraction (duplicate),W__EF_RV
+K__ED_LV_RV,Khened,False,1-physiology,LV/RV volume ratio = 1 / (RV/LV),W__RV_LV_ED
+K__ES_LV_RV,Khened,False,1-physiology,LV/RV volume ratio = 1 / (RV/LV),W__RV_LV_ES
+K__ED_MYO_LV,Khened,False,1-physiology,MYO/LV volume ratio (duplicate),W__MYO_LV_ED
+K__ES_MYO_LV,Khened,False,1-physiology,MYO/LV volume ratio (duplicate),W__MYO_LV_ES
+K__ES_MWT_max_mean,Khened,False,1-physiology,maximal wall thickness (duplicate),I__ES_LVM_max_thickness
+K__ES_MWT_std_mean,Khened,False,1-physiology,in-slice wall-thickness variability (duplicate),I__ES_LVM_std_thickness
+K__ES_MWT_mean_std,Khened,True,,kept,
+K__ES_MWT_std_std,Khened,True,,kept,
+K__ED_MWT_max_mean,Khened,False,1-physiology,maximal wall thickness (duplicate),I__ED_LVM_max_thickness
+K__ED_MWT_std_mean,Khened,False,1-physiology,in-slice wall-thickness variability (duplicate),I__ED_LVM_std_thickness
+K__ED_MWT_mean_std,Khened,True,,kept,
+K__ED_MWT_std_std,Khened,True,,kept,
+K__height,Khened,False,1-physiology,identical copy of patient height,W__height
+K__weight,Khened,False,1-physiology,identical copy of patient weight,W__weight
+I__weight,Isensee,False,1-physiology,identical copy of patient weight,W__weight
+I__height,Isensee,False,1-physiology,identical copy of patient height,W__height
+I__BMI,Isensee,False,1-physiology,deterministic function of height and weight,"W__height, W__weight"
+I__ED_LVM_max_thickness,Isensee,True,,kept,
+I__ED_LVM_min_thickness,Isensee,True,,kept,
+I__ED_LVM_std_thickness,Isensee,True,,kept,
+I__ED_LVM_mean_thickness,Isensee,True,,kept,
+I__ED_LVM_septum_std_thickness,Isensee,True,,kept,
+I__ED_LVM_septum_mean_thickness,Isensee,True,,kept,
+I__ED_RVC_mean_circularity,Isensee,True,,kept,
+I__ED_RVC_max_circumference,Isensee,True,,kept,
+I__ED_RVC_mean_circumference,Isensee,True,,kept,
+I__ED_LVC_mean_circularity,Isensee,True,,kept,
+I__ED_LVC_max_circumference,Isensee,True,,kept,
+I__ED_LVC_mean_circumference,Isensee,True,,kept,
+I__ED_RVC_size_apical,Isensee,True,,kept,
+I__ED_RVC_LVC_ratio_apical,Isensee,False,2-correlation,|Spearman rho| = 0.985 with kept feature (train set),I__ED_RVC_size_apical
+I__ED_RVC_volume_per_bsa,Isensee,True,,kept,
+I__ED_LVM_volume_per_bsa,Isensee,True,,kept,
+I__ED_LVC_volume_per_bsa,Isensee,True,,kept,
+I__ED_LVM_mass,Isensee,False,1-physiology,myocardial mass = ED myocardial volume x 1.05 g/ml,I__ED_LVM_volume_per_bsa
+I__ES_LVM_max_thickness,Isensee,True,,kept,
+I__ES_LVM_min_thickness,Isensee,True,,kept,
+I__ES_LVM_std_thickness,Isensee,True,,kept,
+I__ES_LVM_mean_thickness,Isensee,True,,kept,
+I__ES_LVM_septum_std_thickness,Isensee,True,,kept,
+I__ES_LVM_septum_mean_thickness,Isensee,True,,kept,
+I__ES_RVC_mean_circularity,Isensee,True,,kept,
+I__ES_RVC_max_circumference,Isensee,True,,kept,
+I__ES_RVC_mean_circumference,Isensee,True,,kept,
+I__ES_LVC_mean_circularity,Isensee,True,,kept,
+I__ES_LVC_max_circumference,Isensee,True,,kept,
+I__ES_LVC_mean_circumference,Isensee,True,,kept,
+I__ES_RVC_size_apical,Isensee,True,,kept,
+I__ES_RVC_LVC_ratio_apical,Isensee,False,2-correlation,|Spearman rho| = 0.973 with kept feature (train set),I__ES_RVC_size_apical
+I__ES_RVC_volume_per_bsa,Isensee,True,,kept,
+I__ES_LVM_volume_per_bsa,Isensee,False,2-correlation,|Spearman rho| = 0.970 with kept feature (train set),I__ED_LVM_volume_per_bsa
+I__ES_LVC_volume_per_bsa,Isensee,True,,kept,
+I__ES_LVM_mass,Isensee,False,1-physiology,myocardial mass = ES myocardial volume x 1.05 g/ml,I__ES_LVM_volume_per_bsa
+I__dyn_RVC_vmax,Isensee,False,1-physiology,max volume over cardiac cycle = ED volume,I__ED_RVC_volume_per_bsa
+I__dyn_RVC_vmin,Isensee,False,1-physiology,min volume over cardiac cycle = ES volume,I__ES_RVC_volume_per_bsa
+I__dyn_RVC_dyn_EF,Isensee,False,1-physiology,RV ejection fraction from volume curve (duplicate),W__EF_RV
+I__dyn_RVC_vol_median,Isensee,True,,kept,
+I__dyn_RVC_vol_kurtosis,Isensee,True,,kept,
+I__dyn_RVC_vol_skewness,Isensee,True,,kept,
+I__dyn_RVC_vol_std,Isensee,True,,kept,
+I__dyn_LVM_vmax,Isensee,False,1-physiology,max myocardial volume over cycle ~ myocardial volume,I__ED_LVM_volume_per_bsa
+I__dyn_LVM_vmin,Isensee,False,1-physiology,min myocardial volume over cycle ~ myocardial volume,I__ES_LVM_volume_per_bsa
+I__dyn_LVM_dyn_EF,Isensee,True,,kept,
+I__dyn_LVM_vol_median,Isensee,False,2-correlation,|Spearman rho| = 0.952 with kept feature (train set),I__ED_LVM_volume_per_bsa
+I__dyn_LVM_vol_kurtosis,Isensee,True,,kept,
+I__dyn_LVM_vol_skewness,Isensee,True,,kept,
+I__dyn_LVM_vol_std,Isensee,True,,kept,
+I__dyn_LVC_vmax,Isensee,False,1-physiology,max volume over cardiac cycle = ED volume,I__ED_LVC_volume_per_bsa
+I__dyn_LVC_vmin,Isensee,False,1-physiology,min volume over cardiac cycle = ES volume,I__ES_LVC_volume_per_bsa
+I__dyn_LVC_dyn_EF,Isensee,False,1-physiology,LV ejection fraction from volume curve (duplicate),W__EF_LV
+I__dyn_LVC_vol_median,Isensee,True,,kept,
+I__dyn_LVC_vol_kurtosis,Isensee,True,,kept,
+I__dyn_LVC_vol_skewness,Isensee,True,,kept,
+I__dyn_LVC_vol_std,Isensee,True,,kept,
+I__dyn_ratio_vmin_LVC_RVC,Isensee,False,1-physiology,LV/RV ratio at end-systole = 1 / (RV/LV ES),W__RV_LV_ES
+I__dyn_ratio_vmin_LVM_LVC,Isensee,False,1-physiology,MYO/LV ratio at end-systole (duplicate),W__MYO_LV_ES
+I__dyn_ratio_vmin_RVC_LVM,Isensee,False,1-physiology,RV/MYO = (RV/LV)/(MYO/LV): function of kept ratios,"W__RV_LV_ES, W__MYO_LV_ES"
+I__dyn_dt_vmin_LVC_RVC,Isensee,True,,kept,
+I__dyn_dt_vmax_LVC_RVC,Isensee,True,,kept,
+C__height,Cetin,False,1-physiology,identical copy of patient height,W__height
+C__weight,Cetin,False,1-physiology,identical copy of patient weight,W__weight
+C__ED_ES_duration,Cetin,True,,kept,
+C__RV_ED_shape_Compactness1,Cetin,False,1-physiology,function of Sphericity (same V/A^1.5 index),C__RV_ED_shape_Sphericity
+C__RV_ED_shape_Compactness2,Cetin,False,1-physiology,= Sphericity^3,C__RV_ED_shape_Sphericity
+C__RV_ED_shape_Elongation,Cetin,True,,kept,
+C__RV_ED_shape_Flatness,Cetin,True,,kept,
+C__RV_ED_shape_LeastAxisLength,Cetin,False,1-physiology,= Flatness^2 x MajorAxisLength,C__RV_ED_shape_Flatness
+C__RV_ED_shape_MajorAxisLength,Cetin,True,,kept,
+C__RV_ED_shape_Maximum2DDiameterColumn,Cetin,False,1-physiology,"long-axis maximal diameter, covered by 3D diameter",C__RV_ED_shape_Maximum3DDiameter
+C__RV_ED_shape_Maximum2DDiameterRow,Cetin,False,1-physiology,"long-axis maximal diameter, covered by 3D diameter",C__RV_ED_shape_Maximum3DDiameter
+C__RV_ED_shape_Maximum2DDiameterSlice,Cetin,True,,kept,
+C__RV_ED_shape_Maximum3DDiameter,Cetin,True,,kept,
+C__RV_ED_shape_MeshVolume,Cetin,False,1-physiology,RV ED volume (same quantity as BSA-indexed volume),I__ED_RVC_volume_per_bsa
+C__RV_ED_shape_MinorAxisLength,Cetin,False,1-physiology,= Elongation^2 x MajorAxisLength,C__RV_ED_shape_Elongation
+C__RV_ED_shape_SphericalDisproportion,Cetin,False,1-physiology,= 1 / Sphericity,C__RV_ED_shape_Sphericity
+C__RV_ED_shape_Sphericity,Cetin,True,,kept,
+C__RV_ED_shape_SurfaceArea,Cetin,True,,kept,
+C__RV_ED_shape_SurfaceVolumeRatio,Cetin,False,1-physiology,= SurfaceArea / Volume (both kept),C__RV_ED_shape_SurfaceArea
+C__RV_ED_shape_VoxelVolume,Cetin,False,1-physiology,RV ED volume (same quantity as BSA-indexed volume),I__ED_RVC_volume_per_bsa
+C__RV_ED_firstorder_10Percentile,Cetin,True,,kept,
+C__RV_ED_firstorder_90Percentile,Cetin,True,,kept,
+C__RV_ED_firstorder_Energy,Cetin,True,,kept,
+C__RV_ED_firstorder_Entropy,Cetin,True,,kept,
+C__RV_ED_firstorder_InterquartileRange,Cetin,False,2-correlation,|Spearman rho| = 0.955 with kept feature (train set),C__RV_ED_firstorder_Entropy
+C__RV_ED_firstorder_Kurtosis,Cetin,True,,kept,
+C__RV_ED_firstorder_Maximum,Cetin,True,,kept,
+C__RV_ED_firstorder_MeanAbsoluteDeviation,Cetin,False,2-correlation,|Spearman rho| = 0.992 with kept feature (train set),C__RV_ED_firstorder_Entropy
+C__RV_ED_firstorder_Mean,Cetin,False,2-correlation,|Spearman rho| = 0.983 with kept feature (train set),C__RV_ED_firstorder_90Percentile
+C__RV_ED_firstorder_Median,Cetin,False,2-correlation,|Spearman rho| = 0.976 with kept feature (train set),C__RV_ED_firstorder_90Percentile
+C__RV_ED_firstorder_Minimum,Cetin,True,,kept,
+C__RV_ED_firstorder_Range,Cetin,False,1-physiology,= Maximum - Minimum,"C__RV_ED_firstorder_Maximum, C__RV_ED_firstorder_Minimum"
+C__RV_ED_firstorder_RobustMeanAbsoluteDeviation,Cetin,False,2-correlation,|Spearman rho| = 0.964 with kept feature (train set),C__RV_ED_firstorder_Entropy
+C__RV_ED_firstorder_RootMeanSquared,Cetin,False,1-physiology,= sqrt(Mean^2 + Variance),"C__RV_ED_firstorder_Mean, C__RV_ED_firstorder_StandardDeviation"
+C__RV_ED_firstorder_Skewness,Cetin,True,,kept,
+C__RV_ED_firstorder_StandardDeviation,Cetin,False,2-correlation,|Spearman rho| = 0.996 with kept feature (train set),C__RV_ED_firstorder_Entropy
+C__RV_ED_firstorder_TotalEnergy,Cetin,False,1-physiology,= Energy x voxel volume,C__RV_ED_firstorder_Energy
+C__RV_ED_firstorder_Uniformity,Cetin,False,2-correlation,|Spearman rho| = 0.992 with kept feature (train set),C__RV_ED_firstorder_Entropy
+C__RV_ED_firstorder_Variance,Cetin,False,1-physiology,= StandardDeviation^2,C__RV_ED_firstorder_StandardDeviation
+C__RV_ED_glcm_Autocorrelation,Cetin,True,,kept,
+C__RV_ED_glcm_ClusterProminence,Cetin,False,2-correlation,|Spearman rho| = 0.986 with kept feature (train set),C__RV_ED_firstorder_Entropy
+C__RV_ED_glcm_ClusterShade,Cetin,True,,kept,
+C__RV_ED_glcm_ClusterTendency,Cetin,False,2-correlation,|Spearman rho| = 0.991 with kept feature (train set),C__RV_ED_firstorder_Entropy
+C__RV_ED_glcm_Contrast,Cetin,True,,kept,
+C__RV_ED_glcm_Correlation,Cetin,True,,kept,
+C__RV_ED_glcm_DifferenceAverage,Cetin,False,2-correlation,|Spearman rho| = 0.992 with kept feature (train set),C__RV_ED_glcm_Contrast
+C__RV_ED_glcm_DifferenceEntropy,Cetin,False,2-correlation,|Spearman rho| = 0.996 with kept feature (train set),C__RV_ED_glcm_Contrast
+C__RV_ED_glcm_DifferenceVariance,Cetin,False,2-correlation,|Spearman rho| = 0.987 with kept feature (train set),C__RV_ED_glcm_Contrast
+C__RV_ED_glcm_Id,Cetin,False,2-correlation,|Spearman rho| = 0.981 with kept feature (train set),C__RV_ED_glcm_Contrast
+C__RV_ED_glcm_Idm,Cetin,False,2-correlation,|Spearman rho| = 0.983 with kept feature (train set),C__RV_ED_glcm_Contrast
+C__RV_ED_glcm_Idmn,Cetin,True,,kept,
+C__RV_ED_glcm_Idn,Cetin,True,,kept,
+C__RV_ED_glcm_Imc1,Cetin,True,,kept,
+C__RV_ED_glcm_Imc2,Cetin,True,,kept,
+C__RV_ED_glcm_InverseVariance,Cetin,True,,kept,
+C__RV_ED_glcm_JointAverage,Cetin,False,2-correlation,|Spearman rho| = 0.999 with kept feature (train set),C__RV_ED_glcm_Autocorrelation
+C__RV_ED_glcm_JointEnergy,Cetin,False,2-correlation,|Spearman rho| = 0.969 with kept feature (train set),C__RV_ED_firstorder_Entropy
+C__RV_ED_glcm_JointEntropy,Cetin,False,2-correlation,|Spearman rho| = 0.992 with kept feature (train set),C__RV_ED_firstorder_Entropy
+C__RV_ED_glcm_MCC,Cetin,False,2-correlation,|Spearman rho| = 0.954 with kept feature (train set),C__RV_ED_glcm_Correlation
+C__RV_ED_glcm_MaximumProbability,Cetin,True,,kept,
+C__RV_ED_glcm_SumAverage,Cetin,False,1-physiology,= 2 x JointAverage (symmetric GLCM),C__RV_ED_glcm_JointAverage
+C__RV_ED_glcm_SumEntropy,Cetin,False,2-correlation,|Spearman rho| = 0.994 with kept feature (train set),C__RV_ED_firstorder_Entropy
+C__RV_ED_glcm_SumSquares,Cetin,False,2-correlation,|Spearman rho| = 0.994 with kept feature (train set),C__RV_ED_firstorder_Entropy
+C__RV_ED_glrlm_GrayLevelNonUniformity,Cetin,True,,kept,
+C__RV_ED_glrlm_GrayLevelNonUniformityNormalized,Cetin,False,2-correlation,|Spearman rho| = 0.995 with kept feature (train set),C__RV_ED_firstorder_Entropy
+C__RV_ED_glrlm_GrayLevelVariance,Cetin,False,2-correlation,|Spearman rho| = 0.991 with kept feature (train set),C__RV_ED_firstorder_Entropy
+C__RV_ED_glrlm_HighGrayLevelRunEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.996 with kept feature (train set),C__RV_ED_glcm_Autocorrelation
+C__RV_ED_glrlm_LongRunEmphasis,Cetin,True,,kept,
+C__RV_ED_glrlm_LongRunHighGrayLevelEmphasis,Cetin,True,,kept,
+C__RV_ED_glrlm_LongRunLowGrayLevelEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.958 with kept feature (train set),C__RV_ED_glcm_Autocorrelation
+C__RV_ED_glrlm_LowGrayLevelRunEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.975 with kept feature (train set),C__RV_ED_glcm_Autocorrelation
+C__RV_ED_glrlm_RunEntropy,Cetin,True,,kept,
+C__RV_ED_glrlm_RunLengthNonUniformity,Cetin,True,,kept,
+C__RV_ED_glrlm_RunLengthNonUniformityNormalized,Cetin,True,,kept,
+C__RV_ED_glrlm_RunPercentage,Cetin,False,2-correlation,|Spearman rho| = 0.991 with kept feature (train set),C__RV_ED_glrlm_RunLengthNonUniformityNormalized
+C__RV_ED_glrlm_RunVariance,Cetin,False,2-correlation,|Spearman rho| = 0.997 with kept feature (train set),C__RV_ED_glrlm_LongRunEmphasis
+C__RV_ED_glrlm_ShortRunEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.996 with kept feature (train set),C__RV_ED_glrlm_RunLengthNonUniformityNormalized
+C__RV_ED_glrlm_ShortRunHighGrayLevelEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.988 with kept feature (train set),C__RV_ED_glcm_Autocorrelation
+C__RV_ED_glrlm_ShortRunLowGrayLevelEmphasis,Cetin,True,,kept,
+C__RV_ED_glszm_GrayLevelNonUniformity,Cetin,True,,kept,
+C__RV_ED_glszm_GrayLevelNonUniformityNormalized,Cetin,True,,kept,
+C__RV_ED_glszm_GrayLevelVariance,Cetin,True,,kept,
+C__RV_ED_glszm_HighGrayLevelZoneEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.955 with kept feature (train set),C__RV_ED_glcm_Autocorrelation
+C__RV_ED_glszm_LargeAreaEmphasis,Cetin,True,,kept,
+C__RV_ED_glszm_LargeAreaHighGrayLevelEmphasis,Cetin,True,,kept,
+C__RV_ED_glszm_LargeAreaLowGrayLevelEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.967 with kept feature (train set),C__RV_ED_glszm_LargeAreaEmphasis
+C__RV_ED_glszm_LowGrayLevelZoneEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.966 with kept feature (train set),C__RV_ED_glrlm_ShortRunLowGrayLevelEmphasis
+C__RV_ED_glszm_SizeZoneNonUniformity,Cetin,True,,kept,
+C__RV_ED_glszm_SizeZoneNonUniformityNormalized,Cetin,True,,kept,
+C__RV_ED_glszm_SmallAreaEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.997 with kept feature (train set),C__RV_ED_glszm_SizeZoneNonUniformityNormalized
+C__RV_ED_glszm_SmallAreaHighGrayLevelEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.958 with kept feature (train set),C__RV_ED_glcm_Autocorrelation
+C__RV_ED_glszm_SmallAreaLowGrayLevelEmphasis,Cetin,True,,kept,
+C__RV_ED_glszm_ZoneEntropy,Cetin,True,,kept,
+C__RV_ED_glszm_ZonePercentage,Cetin,True,,kept,
+C__RV_ED_glszm_ZoneVariance,Cetin,False,2-correlation,|Spearman rho| = 1.000 with kept feature (train set),C__RV_ED_glszm_LargeAreaEmphasis
+C__MYO_ED_shape_Compactness1,Cetin,False,1-physiology,function of Sphericity (same V/A^1.5 index),C__MYO_ED_shape_Sphericity
+C__MYO_ED_shape_Compactness2,Cetin,False,1-physiology,= Sphericity^3,C__MYO_ED_shape_Sphericity
+C__MYO_ED_shape_Elongation,Cetin,True,,kept,
+C__MYO_ED_shape_Flatness,Cetin,True,,kept,
+C__MYO_ED_shape_LeastAxisLength,Cetin,False,1-physiology,= Flatness^2 x MajorAxisLength,C__MYO_ED_shape_Flatness
+C__MYO_ED_shape_MajorAxisLength,Cetin,True,,kept,
+C__MYO_ED_shape_Maximum2DDiameterColumn,Cetin,False,1-physiology,"long-axis maximal diameter, covered by 3D diameter",C__MYO_ED_shape_Maximum3DDiameter
+C__MYO_ED_shape_Maximum2DDiameterRow,Cetin,False,1-physiology,"long-axis maximal diameter, covered by 3D diameter",C__MYO_ED_shape_Maximum3DDiameter
+C__MYO_ED_shape_Maximum2DDiameterSlice,Cetin,True,,kept,
+C__MYO_ED_shape_Maximum3DDiameter,Cetin,True,,kept,
+C__MYO_ED_shape_MeshVolume,Cetin,False,1-physiology,MYO ED volume (same quantity as BSA-indexed volume),I__ED_LVM_volume_per_bsa
+C__MYO_ED_shape_MinorAxisLength,Cetin,False,1-physiology,= Elongation^2 x MajorAxisLength,C__MYO_ED_shape_Elongation
+C__MYO_ED_shape_SphericalDisproportion,Cetin,False,1-physiology,= 1 / Sphericity,C__MYO_ED_shape_Sphericity
+C__MYO_ED_shape_Sphericity,Cetin,True,,kept,
+C__MYO_ED_shape_SurfaceArea,Cetin,True,,kept,
+C__MYO_ED_shape_SurfaceVolumeRatio,Cetin,False,1-physiology,= SurfaceArea / Volume (both kept),C__MYO_ED_shape_SurfaceArea
+C__MYO_ED_shape_VoxelVolume,Cetin,False,1-physiology,MYO ED volume (same quantity as BSA-indexed volume),I__ED_LVM_volume_per_bsa
+C__MYO_ED_firstorder_10Percentile,Cetin,True,,kept,
+C__MYO_ED_firstorder_90Percentile,Cetin,True,,kept,
+C__MYO_ED_firstorder_Energy,Cetin,True,,kept,
+C__MYO_ED_firstorder_Entropy,Cetin,True,,kept,
+C__MYO_ED_firstorder_InterquartileRange,Cetin,False,2-correlation,|Spearman rho| = 0.964 with kept feature (train set),C__MYO_ED_firstorder_Entropy
+C__MYO_ED_firstorder_Kurtosis,Cetin,True,,kept,
+C__MYO_ED_firstorder_Maximum,Cetin,True,,kept,
+C__MYO_ED_firstorder_MeanAbsoluteDeviation,Cetin,False,2-correlation,|Spearman rho| = 0.978 with kept feature (train set),C__MYO_ED_firstorder_Entropy
+C__MYO_ED_firstorder_Mean,Cetin,False,2-correlation,|Spearman rho| = 0.959 with kept feature (train set),C__MYO_ED_firstorder_90Percentile
+C__MYO_ED_firstorder_Median,Cetin,True,,kept,
+C__MYO_ED_firstorder_Minimum,Cetin,True,,kept,
+C__MYO_ED_firstorder_Range,Cetin,False,1-physiology,= Maximum - Minimum,"C__MYO_ED_firstorder_Maximum, C__MYO_ED_firstorder_Minimum"
+C__MYO_ED_firstorder_RobustMeanAbsoluteDeviation,Cetin,False,2-correlation,|Spearman rho| = 0.969 with kept feature (train set),C__MYO_ED_firstorder_Entropy
+C__MYO_ED_firstorder_RootMeanSquared,Cetin,False,1-physiology,= sqrt(Mean^2 + Variance),"C__MYO_ED_firstorder_Mean, C__MYO_ED_firstorder_StandardDeviation"
+C__MYO_ED_firstorder_Skewness,Cetin,True,,kept,
+C__MYO_ED_firstorder_StandardDeviation,Cetin,False,2-correlation,|Spearman rho| = 0.978 with kept feature (train set),C__MYO_ED_firstorder_Entropy
+C__MYO_ED_firstorder_TotalEnergy,Cetin,False,1-physiology,= Energy x voxel volume,C__MYO_ED_firstorder_Energy
+C__MYO_ED_firstorder_Uniformity,Cetin,False,2-correlation,|Spearman rho| = 0.977 with kept feature (train set),C__MYO_ED_firstorder_Entropy
+C__MYO_ED_firstorder_Variance,Cetin,False,1-physiology,= StandardDeviation^2,C__MYO_ED_firstorder_StandardDeviation
+C__MYO_ED_glcm_Autocorrelation,Cetin,True,,kept,
+C__MYO_ED_glcm_ClusterProminence,Cetin,False,2-correlation,|Spearman rho| = 0.972 with kept feature (train set),C__MYO_ED_firstorder_Entropy
+C__MYO_ED_glcm_ClusterShade,Cetin,True,,kept,
+C__MYO_ED_glcm_ClusterTendency,Cetin,False,2-correlation,|Spearman rho| = 0.988 with kept feature (train set),C__MYO_ED_firstorder_Entropy
+C__MYO_ED_glcm_Contrast,Cetin,True,,kept,
+C__MYO_ED_glcm_Correlation,Cetin,True,,kept,
+C__MYO_ED_glcm_DifferenceAverage,Cetin,False,2-correlation,|Spearman rho| = 0.987 with kept feature (train set),C__MYO_ED_glcm_Contrast
+C__MYO_ED_glcm_DifferenceEntropy,Cetin,False,2-correlation,|Spearman rho| = 0.997 with kept feature (train set),C__MYO_ED_glcm_Contrast
+C__MYO_ED_glcm_DifferenceVariance,Cetin,False,2-correlation,|Spearman rho| = 0.993 with kept feature (train set),C__MYO_ED_glcm_Contrast
+C__MYO_ED_glcm_Id,Cetin,False,2-correlation,|Spearman rho| = 0.973 with kept feature (train set),C__MYO_ED_glcm_Contrast
+C__MYO_ED_glcm_Idm,Cetin,False,2-correlation,|Spearman rho| = 0.978 with kept feature (train set),C__MYO_ED_glcm_Contrast
+C__MYO_ED_glcm_Idmn,Cetin,True,,kept,
+C__MYO_ED_glcm_Idn,Cetin,True,,kept,
+C__MYO_ED_glcm_Imc1,Cetin,True,,kept,
+C__MYO_ED_glcm_Imc2,Cetin,True,,kept,
+C__MYO_ED_glcm_InverseVariance,Cetin,True,,kept,
+C__MYO_ED_glcm_JointAverage,Cetin,False,2-correlation,|Spearman rho| = 0.999 with kept feature (train set),C__MYO_ED_glcm_Autocorrelation
+C__MYO_ED_glcm_JointEnergy,Cetin,True,,kept,
+C__MYO_ED_glcm_JointEntropy,Cetin,False,2-correlation,|Spearman rho| = 0.990 with kept feature (train set),C__MYO_ED_firstorder_Entropy
+C__MYO_ED_glcm_MCC,Cetin,False,2-correlation,|Spearman rho| = 0.982 with kept feature (train set),C__MYO_ED_glcm_Imc2
+C__MYO_ED_glcm_MaximumProbability,Cetin,False,2-correlation,|Spearman rho| = 0.971 with kept feature (train set),C__MYO_ED_glcm_JointEnergy
+C__MYO_ED_glcm_SumAverage,Cetin,False,1-physiology,= 2 x JointAverage (symmetric GLCM),C__MYO_ED_glcm_JointAverage
+C__MYO_ED_glcm_SumEntropy,Cetin,False,2-correlation,|Spearman rho| = 0.993 with kept feature (train set),C__MYO_ED_firstorder_Entropy
+C__MYO_ED_glcm_SumSquares,Cetin,False,2-correlation,|Spearman rho| = 0.993 with kept feature (train set),C__MYO_ED_firstorder_Entropy
+C__MYO_ED_glrlm_GrayLevelNonUniformity,Cetin,True,,kept,
+C__MYO_ED_glrlm_GrayLevelNonUniformityNormalized,Cetin,False,2-correlation,|Spearman rho| = 0.992 with kept feature (train set),C__MYO_ED_firstorder_Entropy
+C__MYO_ED_glrlm_GrayLevelVariance,Cetin,False,2-correlation,|Spearman rho| = 0.969 with kept feature (train set),C__MYO_ED_firstorder_Entropy
+C__MYO_ED_glrlm_HighGrayLevelRunEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.994 with kept feature (train set),C__MYO_ED_glcm_Autocorrelation
+C__MYO_ED_glrlm_LongRunEmphasis,Cetin,True,,kept,
+C__MYO_ED_glrlm_LongRunHighGrayLevelEmphasis,Cetin,True,,kept,
+C__MYO_ED_glrlm_LongRunLowGrayLevelEmphasis,Cetin,True,,kept,
+C__MYO_ED_glrlm_LowGrayLevelRunEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.974 with kept feature (train set),C__MYO_ED_glcm_Autocorrelation
+C__MYO_ED_glrlm_RunEntropy,Cetin,True,,kept,
+C__MYO_ED_glrlm_RunLengthNonUniformity,Cetin,True,,kept,
+C__MYO_ED_glrlm_RunLengthNonUniformityNormalized,Cetin,True,,kept,
+C__MYO_ED_glrlm_RunPercentage,Cetin,False,2-correlation,|Spearman rho| = 0.991 with kept feature (train set),C__MYO_ED_glrlm_RunLengthNonUniformityNormalized
+C__MYO_ED_glrlm_RunVariance,Cetin,False,2-correlation,|Spearman rho| = 0.997 with kept feature (train set),C__MYO_ED_glrlm_LongRunEmphasis
+C__MYO_ED_glrlm_ShortRunEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.993 with kept feature (train set),C__MYO_ED_glrlm_RunLengthNonUniformityNormalized
+C__MYO_ED_glrlm_ShortRunHighGrayLevelEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.980 with kept feature (train set),C__MYO_ED_glcm_Autocorrelation
+C__MYO_ED_glrlm_ShortRunLowGrayLevelEmphasis,Cetin,True,,kept,
+C__MYO_ED_glszm_GrayLevelNonUniformity,Cetin,True,,kept,
+C__MYO_ED_glszm_GrayLevelNonUniformityNormalized,Cetin,True,,kept,
+C__MYO_ED_glszm_GrayLevelVariance,Cetin,True,,kept,
+C__MYO_ED_glszm_HighGrayLevelZoneEmphasis,Cetin,True,,kept,
+C__MYO_ED_glszm_LargeAreaEmphasis,Cetin,True,,kept,
+C__MYO_ED_glszm_LargeAreaHighGrayLevelEmphasis,Cetin,True,,kept,
+C__MYO_ED_glszm_LargeAreaLowGrayLevelEmphasis,Cetin,True,,kept,
+C__MYO_ED_glszm_LowGrayLevelZoneEmphasis,Cetin,True,,kept,
+C__MYO_ED_glszm_SizeZoneNonUniformity,Cetin,True,,kept,
+C__MYO_ED_glszm_SizeZoneNonUniformityNormalized,Cetin,True,,kept,
+C__MYO_ED_glszm_SmallAreaEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.997 with kept feature (train set),C__MYO_ED_glszm_SizeZoneNonUniformityNormalized
+C__MYO_ED_glszm_SmallAreaHighGrayLevelEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.987 with kept feature (train set),C__MYO_ED_glszm_HighGrayLevelZoneEmphasis
+C__MYO_ED_glszm_SmallAreaLowGrayLevelEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.975 with kept feature (train set),C__MYO_ED_glszm_LowGrayLevelZoneEmphasis
+C__MYO_ED_glszm_ZoneEntropy,Cetin,True,,kept,
+C__MYO_ED_glszm_ZonePercentage,Cetin,True,,kept,
+C__MYO_ED_glszm_ZoneVariance,Cetin,False,2-correlation,|Spearman rho| = 1.000 with kept feature (train set),C__MYO_ED_glszm_LargeAreaEmphasis
+C__LV_ED_shape_Compactness1,Cetin,False,1-physiology,function of Sphericity (same V/A^1.5 index),C__LV_ED_shape_Sphericity
+C__LV_ED_shape_Compactness2,Cetin,False,1-physiology,= Sphericity^3,C__LV_ED_shape_Sphericity
+C__LV_ED_shape_Elongation,Cetin,True,,kept,
+C__LV_ED_shape_Flatness,Cetin,True,,kept,
+C__LV_ED_shape_LeastAxisLength,Cetin,False,1-physiology,= Flatness^2 x MajorAxisLength,C__LV_ED_shape_Flatness
+C__LV_ED_shape_MajorAxisLength,Cetin,True,,kept,
+C__LV_ED_shape_Maximum2DDiameterColumn,Cetin,False,1-physiology,"long-axis maximal diameter, covered by 3D diameter",C__LV_ED_shape_Maximum3DDiameter
+C__LV_ED_shape_Maximum2DDiameterRow,Cetin,False,1-physiology,"long-axis maximal diameter, covered by 3D diameter",C__LV_ED_shape_Maximum3DDiameter
+C__LV_ED_shape_Maximum2DDiameterSlice,Cetin,True,,kept,
+C__LV_ED_shape_Maximum3DDiameter,Cetin,False,2-correlation,|Spearman rho| = 0.982 with kept feature (train set),C__MYO_ED_shape_Maximum3DDiameter
+C__LV_ED_shape_MeshVolume,Cetin,False,1-physiology,LV ED volume (same quantity as BSA-indexed volume),I__ED_LVC_volume_per_bsa
+C__LV_ED_shape_MinorAxisLength,Cetin,False,1-physiology,= Elongation^2 x MajorAxisLength,C__LV_ED_shape_Elongation
+C__LV_ED_shape_SphericalDisproportion,Cetin,False,1-physiology,= 1 / Sphericity,C__LV_ED_shape_Sphericity
+C__LV_ED_shape_Sphericity,Cetin,True,,kept,
+C__LV_ED_shape_SurfaceArea,Cetin,False,2-correlation,|Spearman rho| = 0.951 with kept feature (train set),C__MYO_ED_shape_SurfaceArea
+C__LV_ED_shape_SurfaceVolumeRatio,Cetin,False,1-physiology,= SurfaceArea / Volume (both kept),C__LV_ED_shape_SurfaceArea
+C__LV_ED_shape_VoxelVolume,Cetin,False,1-physiology,LV ED volume (same quantity as BSA-indexed volume),I__ED_LVC_volume_per_bsa
+C__LV_ED_firstorder_10Percentile,Cetin,True,,kept,
+C__LV_ED_firstorder_90Percentile,Cetin,True,,kept,
+C__LV_ED_firstorder_Energy,Cetin,True,,kept,
+C__LV_ED_firstorder_Entropy,Cetin,True,,kept,
+C__LV_ED_firstorder_InterquartileRange,Cetin,False,2-correlation,|Spearman rho| = 0.956 with kept feature (train set),C__LV_ED_firstorder_Entropy
+C__LV_ED_firstorder_Kurtosis,Cetin,True,,kept,
+C__LV_ED_firstorder_Maximum,Cetin,False,2-correlation,|Spearman rho| = 0.958 with kept feature (train set),C__LV_ED_firstorder_90Percentile
+C__LV_ED_firstorder_MeanAbsoluteDeviation,Cetin,False,2-correlation,|Spearman rho| = 0.982 with kept feature (train set),C__LV_ED_firstorder_Entropy
+C__LV_ED_firstorder_Mean,Cetin,False,2-correlation,|Spearman rho| = 0.962 with kept feature (train set),C__LV_ED_firstorder_90Percentile
+C__LV_ED_firstorder_Median,Cetin,True,,kept,
+C__LV_ED_firstorder_Minimum,Cetin,True,,kept,
+C__LV_ED_firstorder_Range,Cetin,False,1-physiology,= Maximum - Minimum,"C__LV_ED_firstorder_Maximum, C__LV_ED_firstorder_Minimum"
+C__LV_ED_firstorder_RobustMeanAbsoluteDeviation,Cetin,False,2-correlation,|Spearman rho| = 0.963 with kept feature (train set),C__LV_ED_firstorder_Entropy
+C__LV_ED_firstorder_RootMeanSquared,Cetin,False,1-physiology,= sqrt(Mean^2 + Variance),"C__LV_ED_firstorder_Mean, C__LV_ED_firstorder_StandardDeviation"
+C__LV_ED_firstorder_Skewness,Cetin,True,,kept,
+C__LV_ED_firstorder_StandardDeviation,Cetin,False,2-correlation,|Spearman rho| = 0.990 with kept feature (train set),C__LV_ED_firstorder_Entropy
+C__LV_ED_firstorder_TotalEnergy,Cetin,False,1-physiology,= Energy x voxel volume,C__LV_ED_firstorder_Energy
+C__LV_ED_firstorder_Uniformity,Cetin,False,2-correlation,|Spearman rho| = 0.991 with kept feature (train set),C__LV_ED_firstorder_Entropy
+C__LV_ED_firstorder_Variance,Cetin,False,1-physiology,= StandardDeviation^2,C__LV_ED_firstorder_StandardDeviation
+C__LV_ED_glcm_Autocorrelation,Cetin,True,,kept,
+C__LV_ED_glcm_ClusterProminence,Cetin,False,2-correlation,|Spearman rho| = 0.983 with kept feature (train set),C__LV_ED_firstorder_Entropy
+C__LV_ED_glcm_ClusterShade,Cetin,True,,kept,
+C__LV_ED_glcm_ClusterTendency,Cetin,False,2-correlation,|Spearman rho| = 0.990 with kept feature (train set),C__LV_ED_firstorder_Entropy
+C__LV_ED_glcm_Contrast,Cetin,False,2-correlation,|Spearman rho| = 0.963 with kept feature (train set),C__LV_ED_firstorder_Entropy
+C__LV_ED_glcm_Correlation,Cetin,True,,kept,
+C__LV_ED_glcm_DifferenceAverage,Cetin,False,2-correlation,|Spearman rho| = 0.960 with kept feature (train set),C__LV_ED_firstorder_Entropy
+C__LV_ED_glcm_DifferenceEntropy,Cetin,False,2-correlation,|Spearman rho| = 0.961 with kept feature (train set),C__LV_ED_firstorder_Entropy
+C__LV_ED_glcm_DifferenceVariance,Cetin,False,2-correlation,|Spearman rho| = 0.963 with kept feature (train set),C__LV_ED_firstorder_Entropy
+C__LV_ED_glcm_Id,Cetin,True,,kept,
+C__LV_ED_glcm_Idm,Cetin,False,2-correlation,|Spearman rho| = 0.999 with kept feature (train set),C__LV_ED_glcm_Id
+C__LV_ED_glcm_Idmn,Cetin,True,,kept,
+C__LV_ED_glcm_Idn,Cetin,True,,kept,
+C__LV_ED_glcm_Imc1,Cetin,True,,kept,
+C__LV_ED_glcm_Imc2,Cetin,True,,kept,
+C__LV_ED_glcm_InverseVariance,Cetin,True,,kept,
+C__LV_ED_glcm_JointAverage,Cetin,False,2-correlation,|Spearman rho| = 0.999 with kept feature (train set),C__LV_ED_glcm_Autocorrelation
+C__LV_ED_glcm_JointEnergy,Cetin,False,2-correlation,|Spearman rho| = 0.975 with kept feature (train set),C__LV_ED_firstorder_Entropy
+C__LV_ED_glcm_JointEntropy,Cetin,False,2-correlation,|Spearman rho| = 0.993 with kept feature (train set),C__LV_ED_firstorder_Entropy
+C__LV_ED_glcm_MCC,Cetin,False,2-correlation,|Spearman rho| = 0.968 with kept feature (train set),C__LV_ED_glcm_Correlation
+C__LV_ED_glcm_MaximumProbability,Cetin,True,,kept,
+C__LV_ED_glcm_SumAverage,Cetin,False,1-physiology,= 2 x JointAverage (symmetric GLCM),C__LV_ED_glcm_JointAverage
+C__LV_ED_glcm_SumEntropy,Cetin,False,2-correlation,|Spearman rho| = 0.995 with kept feature (train set),C__LV_ED_firstorder_Entropy
+C__LV_ED_glcm_SumSquares,Cetin,False,2-correlation,|Spearman rho| = 0.991 with kept feature (train set),C__LV_ED_firstorder_Entropy
+C__LV_ED_glrlm_GrayLevelNonUniformity,Cetin,True,,kept,
+C__LV_ED_glrlm_GrayLevelNonUniformityNormalized,Cetin,False,2-correlation,|Spearman rho| = 0.995 with kept feature (train set),C__LV_ED_firstorder_Entropy
+C__LV_ED_glrlm_GrayLevelVariance,Cetin,False,2-correlation,|Spearman rho| = 0.990 with kept feature (train set),C__LV_ED_firstorder_Entropy
+C__LV_ED_glrlm_HighGrayLevelRunEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.996 with kept feature (train set),C__LV_ED_glcm_Autocorrelation
+C__LV_ED_glrlm_LongRunEmphasis,Cetin,True,,kept,
+C__LV_ED_glrlm_LongRunHighGrayLevelEmphasis,Cetin,True,,kept,
+C__LV_ED_glrlm_LongRunLowGrayLevelEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.973 with kept feature (train set),C__LV_ED_glcm_Autocorrelation
+C__LV_ED_glrlm_LowGrayLevelRunEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.962 with kept feature (train set),C__LV_ED_glcm_Autocorrelation
+C__LV_ED_glrlm_RunEntropy,Cetin,True,,kept,
+C__LV_ED_glrlm_RunLengthNonUniformity,Cetin,True,,kept,
+C__LV_ED_glrlm_RunLengthNonUniformityNormalized,Cetin,False,2-correlation,|Spearman rho| = 0.983 with kept feature (train set),C__LV_ED_glcm_Id
+C__LV_ED_glrlm_RunPercentage,Cetin,False,2-correlation,|Spearman rho| = 0.987 with kept feature (train set),C__LV_ED_glcm_Id
+C__LV_ED_glrlm_RunVariance,Cetin,False,2-correlation,|Spearman rho| = 0.996 with kept feature (train set),C__LV_ED_glrlm_LongRunEmphasis
+C__LV_ED_glrlm_ShortRunEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.985 with kept feature (train set),C__LV_ED_glcm_Id
+C__LV_ED_glrlm_ShortRunHighGrayLevelEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.991 with kept feature (train set),C__LV_ED_glcm_Autocorrelation
+C__LV_ED_glrlm_ShortRunLowGrayLevelEmphasis,Cetin,True,,kept,
+C__LV_ED_glszm_GrayLevelNonUniformity,Cetin,True,,kept,
+C__LV_ED_glszm_GrayLevelNonUniformityNormalized,Cetin,True,,kept,
+C__LV_ED_glszm_GrayLevelVariance,Cetin,True,,kept,
+C__LV_ED_glszm_HighGrayLevelZoneEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.961 with kept feature (train set),C__LV_ED_glcm_Autocorrelation
+C__LV_ED_glszm_LargeAreaEmphasis,Cetin,True,,kept,
+C__LV_ED_glszm_LargeAreaHighGrayLevelEmphasis,Cetin,True,,kept,
+C__LV_ED_glszm_LargeAreaLowGrayLevelEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.967 with kept feature (train set),C__LV_ED_glszm_LargeAreaEmphasis
+C__LV_ED_glszm_LowGrayLevelZoneEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.965 with kept feature (train set),C__LV_ED_glrlm_ShortRunLowGrayLevelEmphasis
+C__LV_ED_glszm_SizeZoneNonUniformity,Cetin,True,,kept,
+C__LV_ED_glszm_SizeZoneNonUniformityNormalized,Cetin,True,,kept,
+C__LV_ED_glszm_SmallAreaEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.995 with kept feature (train set),C__LV_ED_glszm_SizeZoneNonUniformityNormalized
+C__LV_ED_glszm_SmallAreaHighGrayLevelEmphasis,Cetin,True,,kept,
+C__LV_ED_glszm_SmallAreaLowGrayLevelEmphasis,Cetin,True,,kept,
+C__LV_ED_glszm_ZoneEntropy,Cetin,False,2-correlation,|Spearman rho| = 0.952 with kept feature (train set),C__LV_ED_glszm_GrayLevelNonUniformityNormalized
+C__LV_ED_glszm_ZonePercentage,Cetin,True,,kept,
+C__LV_ED_glszm_ZoneVariance,Cetin,False,2-correlation,|Spearman rho| = 1.000 with kept feature (train set),C__LV_ED_glszm_LargeAreaEmphasis
+C__RV_ES_shape_Compactness1,Cetin,False,1-physiology,function of Sphericity (same V/A^1.5 index),C__RV_ES_shape_Sphericity
+C__RV_ES_shape_Compactness2,Cetin,False,1-physiology,= Sphericity^3,C__RV_ES_shape_Sphericity
+C__RV_ES_shape_Elongation,Cetin,True,,kept,
+C__RV_ES_shape_Flatness,Cetin,True,,kept,
+C__RV_ES_shape_LeastAxisLength,Cetin,False,1-physiology,= Flatness^2 x MajorAxisLength,C__RV_ES_shape_Flatness
+C__RV_ES_shape_MajorAxisLength,Cetin,True,,kept,
+C__RV_ES_shape_Maximum2DDiameterColumn,Cetin,False,1-physiology,"long-axis maximal diameter, covered by 3D diameter",C__RV_ES_shape_Maximum3DDiameter
+C__RV_ES_shape_Maximum2DDiameterRow,Cetin,False,1-physiology,"long-axis maximal diameter, covered by 3D diameter",C__RV_ES_shape_Maximum3DDiameter
+C__RV_ES_shape_Maximum2DDiameterSlice,Cetin,True,,kept,
+C__RV_ES_shape_Maximum3DDiameter,Cetin,True,,kept,
+C__RV_ES_shape_MeshVolume,Cetin,False,1-physiology,RV ES volume (same quantity as BSA-indexed volume),I__ES_RVC_volume_per_bsa
+C__RV_ES_shape_MinorAxisLength,Cetin,False,1-physiology,= Elongation^2 x MajorAxisLength,C__RV_ES_shape_Elongation
+C__RV_ES_shape_SphericalDisproportion,Cetin,False,1-physiology,= 1 / Sphericity,C__RV_ES_shape_Sphericity
+C__RV_ES_shape_Sphericity,Cetin,True,,kept,
+C__RV_ES_shape_SurfaceArea,Cetin,True,,kept,
+C__RV_ES_shape_SurfaceVolumeRatio,Cetin,False,1-physiology,= SurfaceArea / Volume (both kept),C__RV_ES_shape_SurfaceArea
+C__RV_ES_shape_VoxelVolume,Cetin,False,1-physiology,RV ES volume (same quantity as BSA-indexed volume),I__ES_RVC_volume_per_bsa
+C__RV_ES_firstorder_10Percentile,Cetin,True,,kept,
+C__RV_ES_firstorder_90Percentile,Cetin,False,2-correlation,|Spearman rho| = 0.972 with kept feature (train set),C__RV_ED_firstorder_90Percentile
+C__RV_ES_firstorder_Energy,Cetin,True,,kept,
+C__RV_ES_firstorder_Entropy,Cetin,True,,kept,
+C__RV_ES_firstorder_InterquartileRange,Cetin,True,,kept,
+C__RV_ES_firstorder_Kurtosis,Cetin,True,,kept,
+C__RV_ES_firstorder_Maximum,Cetin,True,,kept,
+C__RV_ES_firstorder_MeanAbsoluteDeviation,Cetin,False,2-correlation,|Spearman rho| = 0.987 with kept feature (train set),C__RV_ES_firstorder_Entropy
+C__RV_ES_firstorder_Mean,Cetin,False,2-correlation,|Spearman rho| = 0.964 with kept feature (train set),C__RV_ED_firstorder_90Percentile
+C__RV_ES_firstorder_Median,Cetin,False,2-correlation,|Spearman rho| = 0.958 with kept feature (train set),C__RV_ED_firstorder_90Percentile
+C__RV_ES_firstorder_Minimum,Cetin,True,,kept,
+C__RV_ES_firstorder_Range,Cetin,False,1-physiology,= Maximum - Minimum,"C__RV_ES_firstorder_Maximum, C__RV_ES_firstorder_Minimum"
+C__RV_ES_firstorder_RobustMeanAbsoluteDeviation,Cetin,False,2-correlation,|Spearman rho| = 0.997 with kept feature (train set),C__RV_ES_firstorder_InterquartileRange
+C__RV_ES_firstorder_RootMeanSquared,Cetin,False,1-physiology,= sqrt(Mean^2 + Variance),"C__RV_ES_firstorder_Mean, C__RV_ES_firstorder_StandardDeviation"
+C__RV_ES_firstorder_Skewness,Cetin,True,,kept,
+C__RV_ES_firstorder_StandardDeviation,Cetin,False,2-correlation,|Spearman rho| = 0.992 with kept feature (train set),C__RV_ES_firstorder_Entropy
+C__RV_ES_firstorder_TotalEnergy,Cetin,False,1-physiology,= Energy x voxel volume,C__RV_ES_firstorder_Energy
+C__RV_ES_firstorder_Uniformity,Cetin,False,2-correlation,|Spearman rho| = 0.986 with kept feature (train set),C__RV_ES_firstorder_Entropy
+C__RV_ES_firstorder_Variance,Cetin,False,1-physiology,= StandardDeviation^2,C__RV_ES_firstorder_StandardDeviation
+C__RV_ES_glcm_Autocorrelation,Cetin,True,,kept,
+C__RV_ES_glcm_ClusterProminence,Cetin,False,2-correlation,|Spearman rho| = 0.976 with kept feature (train set),C__RV_ES_firstorder_Entropy
+C__RV_ES_glcm_ClusterShade,Cetin,True,,kept,
+C__RV_ES_glcm_ClusterTendency,Cetin,False,2-correlation,|Spearman rho| = 0.987 with kept feature (train set),C__RV_ES_firstorder_Entropy
+C__RV_ES_glcm_Contrast,Cetin,False,2-correlation,|Spearman rho| = 0.962 with kept feature (train set),C__RV_ES_firstorder_InterquartileRange
+C__RV_ES_glcm_Correlation,Cetin,True,,kept,
+C__RV_ES_glcm_DifferenceAverage,Cetin,False,2-correlation,|Spearman rho| = 0.962 with kept feature (train set),C__RV_ES_firstorder_InterquartileRange
+C__RV_ES_glcm_DifferenceEntropy,Cetin,False,2-correlation,|Spearman rho| = 0.961 with kept feature (train set),C__RV_ES_firstorder_InterquartileRange
+C__RV_ES_glcm_DifferenceVariance,Cetin,False,2-correlation,|Spearman rho| = 0.964 with kept feature (train set),C__RV_ES_firstorder_Entropy
+C__RV_ES_glcm_Id,Cetin,True,,kept,
+C__RV_ES_glcm_Idm,Cetin,False,2-correlation,|Spearman rho| = 0.999 with kept feature (train set),C__RV_ES_glcm_Id
+C__RV_ES_glcm_Idmn,Cetin,True,,kept,
+C__RV_ES_glcm_Idn,Cetin,False,2-correlation,|Spearman rho| = 0.973 with kept feature (train set),C__RV_ES_glcm_Idmn
+C__RV_ES_glcm_Imc1,Cetin,True,,kept,
+C__RV_ES_glcm_Imc2,Cetin,True,,kept,
+C__RV_ES_glcm_InverseVariance,Cetin,True,,kept,
+C__RV_ES_glcm_JointAverage,Cetin,False,2-correlation,|Spearman rho| = 0.999 with kept feature (train set),C__RV_ES_glcm_Autocorrelation
+C__RV_ES_glcm_JointEnergy,Cetin,False,2-correlation,|Spearman rho| = 0.965 with kept feature (train set),C__RV_ES_glcm_Id
+C__RV_ES_glcm_JointEntropy,Cetin,False,2-correlation,|Spearman rho| = 0.988 with kept feature (train set),C__RV_ES_firstorder_Entropy
+C__RV_ES_glcm_MCC,Cetin,True,,kept,
+C__RV_ES_glcm_MaximumProbability,Cetin,True,,kept,
+C__RV_ES_glcm_SumAverage,Cetin,False,1-physiology,= 2 x JointAverage (symmetric GLCM),C__RV_ES_glcm_JointAverage
+C__RV_ES_glcm_SumEntropy,Cetin,False,2-correlation,|Spearman rho| = 0.989 with kept feature (train set),C__RV_ES_firstorder_Entropy
+C__RV_ES_glcm_SumSquares,Cetin,False,2-correlation,|Spearman rho| = 0.990 with kept feature (train set),C__RV_ES_firstorder_Entropy
+C__RV_ES_glrlm_GrayLevelNonUniformity,Cetin,True,,kept,
+C__RV_ES_glrlm_GrayLevelNonUniformityNormalized,Cetin,False,2-correlation,|Spearman rho| = 0.991 with kept feature (train set),C__RV_ES_firstorder_Entropy
+C__RV_ES_glrlm_GrayLevelVariance,Cetin,False,2-correlation,|Spearman rho| = 0.986 with kept feature (train set),C__RV_ES_firstorder_Entropy
+C__RV_ES_glrlm_HighGrayLevelRunEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.992 with kept feature (train set),C__RV_ES_glcm_Autocorrelation
+C__RV_ES_glrlm_LongRunEmphasis,Cetin,True,,kept,
+C__RV_ES_glrlm_LongRunHighGrayLevelEmphasis,Cetin,True,,kept,
+C__RV_ES_glrlm_LongRunLowGrayLevelEmphasis,Cetin,True,,kept,
+C__RV_ES_glrlm_LowGrayLevelRunEmphasis,Cetin,True,,kept,
+C__RV_ES_glrlm_RunEntropy,Cetin,True,,kept,
+C__RV_ES_glrlm_RunLengthNonUniformity,Cetin,True,,kept,
+C__RV_ES_glrlm_RunLengthNonUniformityNormalized,Cetin,True,,kept,
+C__RV_ES_glrlm_RunPercentage,Cetin,False,2-correlation,|Spearman rho| = 0.989 with kept feature (train set),C__RV_ES_glrlm_RunLengthNonUniformityNormalized
+C__RV_ES_glrlm_RunVariance,Cetin,False,2-correlation,|Spearman rho| = 0.995 with kept feature (train set),C__RV_ES_glrlm_LongRunEmphasis
+C__RV_ES_glrlm_ShortRunEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.994 with kept feature (train set),C__RV_ES_glrlm_RunLengthNonUniformityNormalized
+C__RV_ES_glrlm_ShortRunHighGrayLevelEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.983 with kept feature (train set),C__RV_ES_glcm_Autocorrelation
+C__RV_ES_glrlm_ShortRunLowGrayLevelEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.985 with kept feature (train set),C__RV_ES_glrlm_LowGrayLevelRunEmphasis
+C__RV_ES_glszm_GrayLevelNonUniformity,Cetin,True,,kept,
+C__RV_ES_glszm_GrayLevelNonUniformityNormalized,Cetin,True,,kept,
+C__RV_ES_glszm_GrayLevelVariance,Cetin,True,,kept,
+C__RV_ES_glszm_HighGrayLevelZoneEmphasis,Cetin,True,,kept,
+C__RV_ES_glszm_LargeAreaEmphasis,Cetin,True,,kept,
+C__RV_ES_glszm_LargeAreaHighGrayLevelEmphasis,Cetin,True,,kept,
+C__RV_ES_glszm_LargeAreaLowGrayLevelEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.950 with kept feature (train set),C__RV_ES_glszm_LargeAreaEmphasis
+C__RV_ES_glszm_LowGrayLevelZoneEmphasis,Cetin,True,,kept,
+C__RV_ES_glszm_SizeZoneNonUniformity,Cetin,True,,kept,
+C__RV_ES_glszm_SizeZoneNonUniformityNormalized,Cetin,True,,kept,
+C__RV_ES_glszm_SmallAreaEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.992 with kept feature (train set),C__RV_ES_glszm_SizeZoneNonUniformityNormalized
+C__RV_ES_glszm_SmallAreaHighGrayLevelEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.971 with kept feature (train set),C__RV_ES_glszm_HighGrayLevelZoneEmphasis
+C__RV_ES_glszm_SmallAreaLowGrayLevelEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.977 with kept feature (train set),C__RV_ES_glszm_LowGrayLevelZoneEmphasis
+C__RV_ES_glszm_ZoneEntropy,Cetin,True,,kept,
+C__RV_ES_glszm_ZonePercentage,Cetin,True,,kept,
+C__RV_ES_glszm_ZoneVariance,Cetin,False,2-correlation,|Spearman rho| = 1.000 with kept feature (train set),C__RV_ES_glszm_LargeAreaEmphasis
+C__MYO_ES_shape_Compactness1,Cetin,False,1-physiology,function of Sphericity (same V/A^1.5 index),C__MYO_ES_shape_Sphericity
+C__MYO_ES_shape_Compactness2,Cetin,False,1-physiology,= Sphericity^3,C__MYO_ES_shape_Sphericity
+C__MYO_ES_shape_Elongation,Cetin,True,,kept,
+C__MYO_ES_shape_Flatness,Cetin,True,,kept,
+C__MYO_ES_shape_LeastAxisLength,Cetin,False,1-physiology,= Flatness^2 x MajorAxisLength,C__MYO_ES_shape_Flatness
+C__MYO_ES_shape_MajorAxisLength,Cetin,True,,kept,
+C__MYO_ES_shape_Maximum2DDiameterColumn,Cetin,False,1-physiology,"long-axis maximal diameter, covered by 3D diameter",C__MYO_ES_shape_Maximum3DDiameter
+C__MYO_ES_shape_Maximum2DDiameterRow,Cetin,False,1-physiology,"long-axis maximal diameter, covered by 3D diameter",C__MYO_ES_shape_Maximum3DDiameter
+C__MYO_ES_shape_Maximum2DDiameterSlice,Cetin,True,,kept,
+C__MYO_ES_shape_Maximum3DDiameter,Cetin,False,2-correlation,|Spearman rho| = 0.964 with kept feature (train set),C__MYO_ES_shape_MajorAxisLength
+C__MYO_ES_shape_MeshVolume,Cetin,False,1-physiology,MYO ES volume (same quantity as BSA-indexed volume),I__ES_LVM_volume_per_bsa
+C__MYO_ES_shape_MinorAxisLength,Cetin,False,1-physiology,= Elongation^2 x MajorAxisLength,C__MYO_ES_shape_Elongation
+C__MYO_ES_shape_SphericalDisproportion,Cetin,False,1-physiology,= 1 / Sphericity,C__MYO_ES_shape_Sphericity
+C__MYO_ES_shape_Sphericity,Cetin,False,2-correlation,|Spearman rho| = 0.963 with kept feature (train set),W__MYO_LV_ES
+C__MYO_ES_shape_SurfaceArea,Cetin,True,,kept,
+C__MYO_ES_shape_SurfaceVolumeRatio,Cetin,False,1-physiology,= SurfaceArea / Volume (both kept),C__MYO_ES_shape_SurfaceArea
+C__MYO_ES_shape_VoxelVolume,Cetin,False,1-physiology,MYO ES volume (same quantity as BSA-indexed volume),I__ES_LVM_volume_per_bsa
+C__MYO_ES_firstorder_10Percentile,Cetin,True,,kept,
+C__MYO_ES_firstorder_90Percentile,Cetin,True,,kept,
+C__MYO_ES_firstorder_Energy,Cetin,False,2-correlation,|Spearman rho| = 0.952 with kept feature (train set),C__MYO_ED_firstorder_Energy
+C__MYO_ES_firstorder_Entropy,Cetin,True,,kept,
+C__MYO_ES_firstorder_InterquartileRange,Cetin,True,,kept,
+C__MYO_ES_firstorder_Kurtosis,Cetin,True,,kept,
+C__MYO_ES_firstorder_Maximum,Cetin,True,,kept,
+C__MYO_ES_firstorder_MeanAbsoluteDeviation,Cetin,False,2-correlation,|Spearman rho| = 0.984 with kept feature (train set),C__MYO_ES_firstorder_InterquartileRange
+C__MYO_ES_firstorder_Mean,Cetin,False,2-correlation,|Spearman rho| = 0.967 with kept feature (train set),C__MYO_ES_firstorder_90Percentile
+C__MYO_ES_firstorder_Median,Cetin,False,2-correlation,|Spearman rho| = 0.951 with kept feature (train set),C__MYO_ES_firstorder_90Percentile
+C__MYO_ES_firstorder_Minimum,Cetin,True,,kept,
+C__MYO_ES_firstorder_Range,Cetin,False,1-physiology,= Maximum - Minimum,"C__MYO_ES_firstorder_Maximum, C__MYO_ES_firstorder_Minimum"
+C__MYO_ES_firstorder_RobustMeanAbsoluteDeviation,Cetin,False,2-correlation,|Spearman rho| = 0.997 with kept feature (train set),C__MYO_ES_firstorder_InterquartileRange
+C__MYO_ES_firstorder_RootMeanSquared,Cetin,False,1-physiology,= sqrt(Mean^2 + Variance),"C__MYO_ES_firstorder_Mean, C__MYO_ES_firstorder_StandardDeviation"
+C__MYO_ES_firstorder_Skewness,Cetin,True,,kept,
+C__MYO_ES_firstorder_StandardDeviation,Cetin,False,2-correlation,|Spearman rho| = 0.957 with kept feature (train set),C__MYO_ES_firstorder_InterquartileRange
+C__MYO_ES_firstorder_TotalEnergy,Cetin,False,1-physiology,= Energy x voxel volume,C__MYO_ES_firstorder_Energy
+C__MYO_ES_firstorder_Uniformity,Cetin,False,2-correlation,|Spearman rho| = 0.980 with kept feature (train set),C__MYO_ES_firstorder_Entropy
+C__MYO_ES_firstorder_Variance,Cetin,False,1-physiology,= StandardDeviation^2,C__MYO_ES_firstorder_StandardDeviation
+C__MYO_ES_glcm_Autocorrelation,Cetin,True,,kept,
+C__MYO_ES_glcm_ClusterProminence,Cetin,True,,kept,
+C__MYO_ES_glcm_ClusterShade,Cetin,True,,kept,
+C__MYO_ES_glcm_ClusterTendency,Cetin,False,2-correlation,|Spearman rho| = 0.989 with kept feature (train set),C__MYO_ES_firstorder_Entropy
+C__MYO_ES_glcm_Contrast,Cetin,True,,kept,
+C__MYO_ES_glcm_Correlation,Cetin,True,,kept,
+C__MYO_ES_glcm_DifferenceAverage,Cetin,False,2-correlation,|Spearman rho| = 0.990 with kept feature (train set),C__MYO_ES_glcm_Contrast
+C__MYO_ES_glcm_DifferenceEntropy,Cetin,False,2-correlation,|Spearman rho| = 0.996 with kept feature (train set),C__MYO_ES_glcm_Contrast
+C__MYO_ES_glcm_DifferenceVariance,Cetin,False,2-correlation,|Spearman rho| = 0.991 with kept feature (train set),C__MYO_ES_glcm_Contrast
+C__MYO_ES_glcm_Id,Cetin,False,2-correlation,|Spearman rho| = 0.979 with kept feature (train set),C__MYO_ES_glcm_Contrast
+C__MYO_ES_glcm_Idm,Cetin,False,2-correlation,|Spearman rho| = 0.981 with kept feature (train set),C__MYO_ES_glcm_Contrast
+C__MYO_ES_glcm_Idmn,Cetin,True,,kept,
+C__MYO_ES_glcm_Idn,Cetin,True,,kept,
+C__MYO_ES_glcm_Imc1,Cetin,True,,kept,
+C__MYO_ES_glcm_Imc2,Cetin,True,,kept,
+C__MYO_ES_glcm_InverseVariance,Cetin,True,,kept,
+C__MYO_ES_glcm_JointAverage,Cetin,False,2-correlation,|Spearman rho| = 0.999 with kept feature (train set),C__MYO_ES_glcm_Autocorrelation
+C__MYO_ES_glcm_JointEnergy,Cetin,True,,kept,
+C__MYO_ES_glcm_JointEntropy,Cetin,False,2-correlation,|Spearman rho| = 0.986 with kept feature (train set),C__MYO_ES_firstorder_Entropy
+C__MYO_ES_glcm_MCC,Cetin,False,2-correlation,|Spearman rho| = 0.968 with kept feature (train set),C__MYO_ES_glcm_Imc2
+C__MYO_ES_glcm_MaximumProbability,Cetin,False,2-correlation,|Spearman rho| = 0.975 with kept feature (train set),C__MYO_ES_glcm_JointEnergy
+C__MYO_ES_glcm_SumAverage,Cetin,False,1-physiology,= 2 x JointAverage (symmetric GLCM),C__MYO_ES_glcm_JointAverage
+C__MYO_ES_glcm_SumEntropy,Cetin,False,2-correlation,|Spearman rho| = 0.991 with kept feature (train set),C__MYO_ES_firstorder_Entropy
+C__MYO_ES_glcm_SumSquares,Cetin,False,2-correlation,|Spearman rho| = 0.993 with kept feature (train set),C__MYO_ES_firstorder_Entropy
+C__MYO_ES_glrlm_GrayLevelNonUniformity,Cetin,False,2-correlation,|Spearman rho| = 0.957 with kept feature (train set),C__MYO_ED_glrlm_GrayLevelNonUniformity
+C__MYO_ES_glrlm_GrayLevelNonUniformityNormalized,Cetin,False,2-correlation,|Spearman rho| = 0.975 with kept feature (train set),C__MYO_ES_firstorder_Entropy
+C__MYO_ES_glrlm_GrayLevelVariance,Cetin,False,2-correlation,|Spearman rho| = 0.982 with kept feature (train set),C__MYO_ES_glcm_ClusterProminence
+C__MYO_ES_glrlm_HighGrayLevelRunEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.991 with kept feature (train set),C__MYO_ES_glcm_Autocorrelation
+C__MYO_ES_glrlm_LongRunEmphasis,Cetin,True,,kept,
+C__MYO_ES_glrlm_LongRunHighGrayLevelEmphasis,Cetin,True,,kept,
+C__MYO_ES_glrlm_LongRunLowGrayLevelEmphasis,Cetin,True,,kept,
+C__MYO_ES_glrlm_LowGrayLevelRunEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.981 with kept feature (train set),C__MYO_ES_glcm_Autocorrelation
+C__MYO_ES_glrlm_RunEntropy,Cetin,True,,kept,
+C__MYO_ES_glrlm_RunLengthNonUniformity,Cetin,True,,kept,
+C__MYO_ES_glrlm_RunLengthNonUniformityNormalized,Cetin,True,,kept,
+C__MYO_ES_glrlm_RunPercentage,Cetin,False,2-correlation,|Spearman rho| = 0.981 with kept feature (train set),C__MYO_ES_glrlm_RunLengthNonUniformityNormalized
+C__MYO_ES_glrlm_RunVariance,Cetin,False,2-correlation,|Spearman rho| = 0.994 with kept feature (train set),C__MYO_ES_glrlm_LongRunEmphasis
+C__MYO_ES_glrlm_ShortRunEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.994 with kept feature (train set),C__MYO_ES_glrlm_RunLengthNonUniformityNormalized
+C__MYO_ES_glrlm_ShortRunHighGrayLevelEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.962 with kept feature (train set),C__MYO_ES_glcm_Autocorrelation
+C__MYO_ES_glrlm_ShortRunLowGrayLevelEmphasis,Cetin,True,,kept,
+C__MYO_ES_glszm_GrayLevelNonUniformity,Cetin,True,,kept,
+C__MYO_ES_glszm_GrayLevelNonUniformityNormalized,Cetin,True,,kept,
+C__MYO_ES_glszm_GrayLevelVariance,Cetin,True,,kept,
+C__MYO_ES_glszm_HighGrayLevelZoneEmphasis,Cetin,True,,kept,
+C__MYO_ES_glszm_LargeAreaEmphasis,Cetin,True,,kept,
+C__MYO_ES_glszm_LargeAreaHighGrayLevelEmphasis,Cetin,True,,kept,
+C__MYO_ES_glszm_LargeAreaLowGrayLevelEmphasis,Cetin,True,,kept,
+C__MYO_ES_glszm_LowGrayLevelZoneEmphasis,Cetin,True,,kept,
+C__MYO_ES_glszm_SizeZoneNonUniformity,Cetin,True,,kept,
+C__MYO_ES_glszm_SizeZoneNonUniformityNormalized,Cetin,True,,kept,
+C__MYO_ES_glszm_SmallAreaEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.994 with kept feature (train set),C__MYO_ES_glszm_SizeZoneNonUniformityNormalized
+C__MYO_ES_glszm_SmallAreaHighGrayLevelEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.967 with kept feature (train set),C__MYO_ES_glszm_HighGrayLevelZoneEmphasis
+C__MYO_ES_glszm_SmallAreaLowGrayLevelEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.967 with kept feature (train set),C__MYO_ES_glszm_LowGrayLevelZoneEmphasis
+C__MYO_ES_glszm_ZoneEntropy,Cetin,True,,kept,
+C__MYO_ES_glszm_ZonePercentage,Cetin,True,,kept,
+C__MYO_ES_glszm_ZoneVariance,Cetin,False,2-correlation,|Spearman rho| = 1.000 with kept feature (train set),C__MYO_ES_glszm_LargeAreaEmphasis
+C__LV_ES_shape_Compactness1,Cetin,False,1-physiology,function of Sphericity (same V/A^1.5 index),C__LV_ES_shape_Sphericity
+C__LV_ES_shape_Compactness2,Cetin,False,1-physiology,= Sphericity^3,C__LV_ES_shape_Sphericity
+C__LV_ES_shape_Elongation,Cetin,True,,kept,
+C__LV_ES_shape_Flatness,Cetin,True,,kept,
+C__LV_ES_shape_LeastAxisLength,Cetin,False,1-physiology,= Flatness^2 x MajorAxisLength,C__LV_ES_shape_Flatness
+C__LV_ES_shape_MajorAxisLength,Cetin,True,,kept,
+C__LV_ES_shape_Maximum2DDiameterColumn,Cetin,False,1-physiology,"long-axis maximal diameter, covered by 3D diameter",C__LV_ES_shape_Maximum3DDiameter
+C__LV_ES_shape_Maximum2DDiameterRow,Cetin,False,1-physiology,"long-axis maximal diameter, covered by 3D diameter",C__LV_ES_shape_Maximum3DDiameter
+C__LV_ES_shape_Maximum2DDiameterSlice,Cetin,True,,kept,
+C__LV_ES_shape_Maximum3DDiameter,Cetin,True,,kept,
+C__LV_ES_shape_MeshVolume,Cetin,False,1-physiology,LV ES volume (same quantity as BSA-indexed volume),I__ES_LVC_volume_per_bsa
+C__LV_ES_shape_MinorAxisLength,Cetin,False,1-physiology,= Elongation^2 x MajorAxisLength,C__LV_ES_shape_Elongation
+C__LV_ES_shape_SphericalDisproportion,Cetin,False,1-physiology,= 1 / Sphericity,C__LV_ES_shape_Sphericity
+C__LV_ES_shape_Sphericity,Cetin,True,,kept,
+C__LV_ES_shape_SurfaceArea,Cetin,False,2-correlation,|Spearman rho| = 0.956 with kept feature (train set),I__ES_LVC_volume_per_bsa
+C__LV_ES_shape_SurfaceVolumeRatio,Cetin,False,1-physiology,= SurfaceArea / Volume (both kept),C__LV_ES_shape_SurfaceArea
+C__LV_ES_shape_VoxelVolume,Cetin,False,1-physiology,LV ES volume (same quantity as BSA-indexed volume),I__ES_LVC_volume_per_bsa
+C__LV_ES_firstorder_10Percentile,Cetin,True,,kept,
+C__LV_ES_firstorder_90Percentile,Cetin,False,2-correlation,|Spearman rho| = 0.972 with kept feature (train set),C__LV_ED_firstorder_90Percentile
+C__LV_ES_firstorder_Energy,Cetin,True,,kept,
+C__LV_ES_firstorder_Entropy,Cetin,True,,kept,
+C__LV_ES_firstorder_InterquartileRange,Cetin,True,,kept,
+C__LV_ES_firstorder_Kurtosis,Cetin,True,,kept,
+C__LV_ES_firstorder_Maximum,Cetin,False,2-correlation,|Spearman rho| = 0.971 with kept feature (train set),C__LV_ED_firstorder_90Percentile
+C__LV_ES_firstorder_MeanAbsoluteDeviation,Cetin,False,2-correlation,|Spearman rho| = 0.982 with kept feature (train set),C__LV_ES_firstorder_InterquartileRange
+C__LV_ES_firstorder_Mean,Cetin,False,2-correlation,|Spearman rho| = 0.955 with kept feature (train set),C__LV_ED_firstorder_Median
+C__LV_ES_firstorder_Median,Cetin,True,,kept,
+C__LV_ES_firstorder_Minimum,Cetin,True,,kept,
+C__LV_ES_firstorder_Range,Cetin,False,1-physiology,= Maximum - Minimum,"C__LV_ES_firstorder_Maximum, C__LV_ES_firstorder_Minimum"
+C__LV_ES_firstorder_RobustMeanAbsoluteDeviation,Cetin,False,2-correlation,|Spearman rho| = 0.997 with kept feature (train set),C__LV_ES_firstorder_InterquartileRange
+C__LV_ES_firstorder_RootMeanSquared,Cetin,False,1-physiology,= sqrt(Mean^2 + Variance),"C__LV_ES_firstorder_Mean, C__LV_ES_firstorder_StandardDeviation"
+C__LV_ES_firstorder_Skewness,Cetin,True,,kept,
+C__LV_ES_firstorder_StandardDeviation,Cetin,False,2-correlation,|Spearman rho| = 0.987 with kept feature (train set),C__LV_ES_firstorder_Entropy
+C__LV_ES_firstorder_TotalEnergy,Cetin,False,1-physiology,= Energy x voxel volume,C__LV_ES_firstorder_Energy
+C__LV_ES_firstorder_Uniformity,Cetin,False,2-correlation,|Spearman rho| = 0.990 with kept feature (train set),C__LV_ES_firstorder_Entropy
+C__LV_ES_firstorder_Variance,Cetin,False,1-physiology,= StandardDeviation^2,C__LV_ES_firstorder_StandardDeviation
+C__LV_ES_glcm_Autocorrelation,Cetin,True,,kept,
+C__LV_ES_glcm_ClusterProminence,Cetin,False,2-correlation,|Spearman rho| = 0.986 with kept feature (train set),C__LV_ES_firstorder_Entropy
+C__LV_ES_glcm_ClusterShade,Cetin,True,,kept,
+C__LV_ES_glcm_ClusterTendency,Cetin,False,2-correlation,|Spearman rho| = 0.978 with kept feature (train set),C__LV_ES_firstorder_Entropy
+C__LV_ES_glcm_Contrast,Cetin,False,2-correlation,|Spearman rho| = 0.963 with kept feature (train set),C__LV_ED_glcm_Id
+C__LV_ES_glcm_Correlation,Cetin,True,,kept,
+C__LV_ES_glcm_DifferenceAverage,Cetin,False,2-correlation,|Spearman rho| = 0.965 with kept feature (train set),C__LV_ED_glcm_Id
+C__LV_ES_glcm_DifferenceEntropy,Cetin,False,2-correlation,|Spearman rho| = 0.966 with kept feature (train set),C__LV_ED_glcm_Id
+C__LV_ES_glcm_DifferenceVariance,Cetin,False,2-correlation,|Spearman rho| = 0.957 with kept feature (train set),C__LV_ES_firstorder_Entropy
+C__LV_ES_glcm_Id,Cetin,False,2-correlation,|Spearman rho| = 0.960 with kept feature (train set),C__LV_ED_glcm_Id
+C__LV_ES_glcm_Idm,Cetin,False,2-correlation,|Spearman rho| = 0.961 with kept feature (train set),C__LV_ED_glcm_Id
+C__LV_ES_glcm_Idmn,Cetin,True,,kept,
+C__LV_ES_glcm_Idn,Cetin,False,2-correlation,|Spearman rho| = 0.966 with kept feature (train set),C__LV_ES_glcm_Idmn
+C__LV_ES_glcm_Imc1,Cetin,True,,kept,
+C__LV_ES_glcm_Imc2,Cetin,True,,kept,
+C__LV_ES_glcm_InverseVariance,Cetin,True,,kept,
+C__LV_ES_glcm_JointAverage,Cetin,False,2-correlation,|Spearman rho| = 0.998 with kept feature (train set),C__LV_ES_glcm_Autocorrelation
+C__LV_ES_glcm_JointEnergy,Cetin,False,2-correlation,|Spearman rho| = 0.971 with kept feature (train set),C__LV_ES_firstorder_Entropy
+C__LV_ES_glcm_JointEntropy,Cetin,False,2-correlation,|Spearman rho| = 0.992 with kept feature (train set),C__LV_ES_firstorder_Entropy
+C__LV_ES_glcm_MCC,Cetin,True,,kept,
+C__LV_ES_glcm_MaximumProbability,Cetin,True,,kept,
+C__LV_ES_glcm_SumAverage,Cetin,False,1-physiology,= 2 x JointAverage (symmetric GLCM),C__LV_ES_glcm_JointAverage
+C__LV_ES_glcm_SumEntropy,Cetin,False,2-correlation,|Spearman rho| = 0.992 with kept feature (train set),C__LV_ES_firstorder_Entropy
+C__LV_ES_glcm_SumSquares,Cetin,False,2-correlation,|Spearman rho| = 0.984 with kept feature (train set),C__LV_ES_firstorder_Entropy
+C__LV_ES_glrlm_GrayLevelNonUniformity,Cetin,True,,kept,
+C__LV_ES_glrlm_GrayLevelNonUniformityNormalized,Cetin,False,2-correlation,|Spearman rho| = 0.994 with kept feature (train set),C__LV_ES_firstorder_Entropy
+C__LV_ES_glrlm_GrayLevelVariance,Cetin,False,2-correlation,|Spearman rho| = 0.988 with kept feature (train set),C__LV_ES_firstorder_Entropy
+C__LV_ES_glrlm_HighGrayLevelRunEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.995 with kept feature (train set),C__LV_ES_glcm_Autocorrelation
+C__LV_ES_glrlm_LongRunEmphasis,Cetin,True,,kept,
+C__LV_ES_glrlm_LongRunHighGrayLevelEmphasis,Cetin,True,,kept,
+C__LV_ES_glrlm_LongRunLowGrayLevelEmphasis,Cetin,True,,kept,
+C__LV_ES_glrlm_LowGrayLevelRunEmphasis,Cetin,True,,kept,
+C__LV_ES_glrlm_RunEntropy,Cetin,True,,kept,
+C__LV_ES_glrlm_RunLengthNonUniformity,Cetin,True,,kept,
+C__LV_ES_glrlm_RunLengthNonUniformityNormalized,Cetin,True,,kept,
+C__LV_ES_glrlm_RunPercentage,Cetin,False,2-correlation,|Spearman rho| = 0.988 with kept feature (train set),C__LV_ES_glrlm_RunLengthNonUniformityNormalized
+C__LV_ES_glrlm_RunVariance,Cetin,False,2-correlation,|Spearman rho| = 0.996 with kept feature (train set),C__LV_ES_glrlm_LongRunEmphasis
+C__LV_ES_glrlm_ShortRunEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.997 with kept feature (train set),C__LV_ES_glrlm_RunLengthNonUniformityNormalized
+C__LV_ES_glrlm_ShortRunHighGrayLevelEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.984 with kept feature (train set),C__LV_ES_glcm_Autocorrelation
+C__LV_ES_glrlm_ShortRunLowGrayLevelEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.992 with kept feature (train set),C__LV_ES_glrlm_LowGrayLevelRunEmphasis
+C__LV_ES_glszm_GrayLevelNonUniformity,Cetin,True,,kept,
+C__LV_ES_glszm_GrayLevelNonUniformityNormalized,Cetin,True,,kept,
+C__LV_ES_glszm_GrayLevelVariance,Cetin,True,,kept,
+C__LV_ES_glszm_HighGrayLevelZoneEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.950 with kept feature (train set),C__LV_ES_glszm_GrayLevelVariance
+C__LV_ES_glszm_LargeAreaEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.958 with kept feature (train set),C__LV_ES_glrlm_LongRunEmphasis
+C__LV_ES_glszm_LargeAreaHighGrayLevelEmphasis,Cetin,True,,kept,
+C__LV_ES_glszm_LargeAreaLowGrayLevelEmphasis,Cetin,True,,kept,
+C__LV_ES_glszm_LowGrayLevelZoneEmphasis,Cetin,True,,kept,
+C__LV_ES_glszm_SizeZoneNonUniformity,Cetin,True,,kept,
+C__LV_ES_glszm_SizeZoneNonUniformityNormalized,Cetin,True,,kept,
+C__LV_ES_glszm_SmallAreaEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.990 with kept feature (train set),C__LV_ES_glszm_SizeZoneNonUniformityNormalized
+C__LV_ES_glszm_SmallAreaHighGrayLevelEmphasis,Cetin,True,,kept,
+C__LV_ES_glszm_SmallAreaLowGrayLevelEmphasis,Cetin,False,2-correlation,|Spearman rho| = 0.975 with kept feature (train set),C__LV_ES_glszm_LowGrayLevelZoneEmphasis
+C__LV_ES_glszm_ZoneEntropy,Cetin,True,,kept,
+C__LV_ES_glszm_ZonePercentage,Cetin,False,2-correlation,|Spearman rho| = 0.958 with kept feature (train set),C__LV_ES_glszm_LargeAreaLowGrayLevelEmphasis
+C__LV_ES_glszm_ZoneVariance,Cetin,False,2-correlation,|Spearman rho| = 0.958 with kept feature (train set),C__LV_ES_glrlm_LongRunEmphasis
