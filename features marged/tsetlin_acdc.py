@@ -57,7 +57,12 @@ class Thermometer:
         return [(f, t) for f, ts in zip(feature_names, self.thresholds_) for t in ts]
 
 
+FEATURE_SETS = ["reduced", "clinical", "all"]
+
+
 def load(feature_set):
+    if feature_set not in FEATURE_SETS:
+        raise ValueError(f"unknown feature set {feature_set!r}; choose from {FEATURE_SETS}")
     df = pd.read_csv("merged_features_reduced.csv" if feature_set != "all" else "merged_features_all.csv",
                      index_col="pid")
     feats = [c for c in df.columns if c != "group"]
@@ -166,7 +171,11 @@ def run(feature_set):
 
 
 if __name__ == "__main__":
-    sets = sys.argv[1:] or ["reduced", "clinical", "all"]
+    # Run all three feature sets by default. Only recognised names are taken from the
+    # command line, so the extra arguments Jupyter/Colab/Spyder pass (e.g. "-f kernel.json")
+    # are ignored. Examples:  python tsetlin_acdc.py            -> all three
+    #                         python tsetlin_acdc.py clinical   -> only the 57-feature set
+    sets = [a for a in sys.argv[1:] if a in FEATURE_SETS] or FEATURE_SETS
     allres = {s: run(s) for s in sets}
     with open("tsetlin_results.json", "w") as f:
         json.dump(allres, f, indent=1, default=float)
